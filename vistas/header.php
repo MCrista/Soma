@@ -24,7 +24,7 @@
     <?php include "alerta.php" ?>
         <div class="container">
             <a class="navbar-brand" href="inicio.php">
-                <img src="../public/img/somaLogoBarra.png" width="35%" alt="Logo Gobo">
+                <img src="../public/img/somaLogoBarra.png" width="80%" alt="Logo Gobo">
             </a>   
             <button class="navbar-toggler" type="button" data-toggle="collapse" 
                     data-target="#navbarResponsive" aria-controls="navbarResponsive" 

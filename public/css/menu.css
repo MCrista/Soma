@@ -1,17 +1,17 @@
 
-/* BASIC */
+* BASIC */
 
 html {
-    background-color: #64b331;
+    background-color: #007aff;
   }
   
   body {
     font-family: "Poppins", sans-serif;
-    height: 100vh;
+    height: 100vh; /*largo fondo login*/
   }
   
   a {
-    color: black;
+    color: rgb(0, 0, 0); /*texto contactar el admin*/
     display:inline-block;
     text-decoration: none;
     font-weight: 400;
@@ -23,8 +23,8 @@ html {
     font-weight: 600;
     text-transform: uppercase;
     display:inline-block;
-    margin: 40px 8px 10px 8px; 
-    color: #cccccc;
+    margin: 40px 8px 100px 8px; 
+    color: #cccccc; 
   }
 
   .bars_menu {
@@ -51,7 +51,7 @@ html {
   /* STRUCTURE */
   
   .wrapper {
-    background-color: rgb(7, 157, 36);
+    background-color: rgb(129, 198, 228);/*color fondo login*/
     display: flex;
     align-items: center;
     flex-direction: column; 
@@ -67,22 +67,22 @@ html {
   }
   
   #formContent {
-    -webkit-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 1px 10px 10px 10px;
     border-radius: 10px 10px 10px 10px;
-    background: #fff;
+    background: #ffffff; /*color recuadro login*/
     padding: 30px;
     width: 90%;
     max-width: 450px;
     position: relative;
-    padding: 0px;
+    padding: 20px;
     -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     text-align: center;
   }
   
   #formFooter {
-    background-color: #f6f6f6;
-    border-top: 1px solid #dce8f1;
+    background-color: #ffffff; /*Color boton contactar el administrador*/
+    border-top: 1px solid #000000; /*linea horizontal login*/
     padding: 25px;
     text-align: center;
     -webkit-border-radius: 0 0 10px 10px;
@@ -107,17 +107,17 @@ html {
   /* FORM TYPOGRAPHY*/
   
   input[type=button], input[type=submit], input[type=reset]  {
-    background-color: black;
+    background-color: black;/*color boton login*/
     border: none;
-    color: white;
+    color: white;/*letra del lobon login*/
     padding: 15px 80px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     text-transform: uppercase;
     font-size: 13px;
-    -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
-    box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+    -webkit-box-shadow: 0 10px 30px 0 rgba(253, 0, 0, 0.4);
+    box-shadow: 0 10px 30px 0 rgba(25, 0, 255, 0.4);/*sombra boton login*/
     -webkit-border-radius: 5px 5px 5px 5px;
     border-radius: 5px 5px 5px 5px;
     margin: 5px 20px 40px 20px;
@@ -129,7 +129,7 @@ html {
   }
   
   input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-    background-color: #64b331;
+    background-color: #007AFF; /*boton login cambio de color*/
   }
   
   input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
@@ -139,7 +139,7 @@ html {
     -ms-transform: scale(0.95);
     transform: scale(0.95);
   }
-  
+
   input[type=text] {
     background-color: #f6f6f6;
     border: none;
@@ -184,16 +184,16 @@ html {
   
   input[type=text]:focus {
     background-color: #fff;
-    border-bottom: 2px solid purple;
+    border-bottom: 2px solid rgb(78, 137, 245); /*usuario login linea inferior*/
   }
   
   input[type=text]:placeholder {
-    color: #cccccc;
+    color: cccccc;
   }
 
   input[type=password]:focus {
     background-color: #fff;
-    border-bottom: 2px solid purple;
+    border-bottom: 2px solid rgb(78, 137, 245); /*password login  linea inferior*/
   }
   
   input[type=password]:placeholder {
@@ -291,13 +291,13 @@ html {
     bottom: -10px;
     width: 0;
     height: 2px;
-    background-color: #64b331;
+    background-color: #007AFF;/*barra de contactar admin*/
     content: "";
     transition: width 1s;
   }
   
   .underlineHover:hover {
-    color: #0d0d0d;
+    color: #0d0d0d;/*texto de contactar admin*/
   }
   
   .underlineHover:hover:after{
@@ -305,8 +305,8 @@ html {
   }
   
   h1{
-      color:#64b331;
-      font-size: 35px;
+      color:#007AFF; /*Titulo login*/
+      font-size: 50px;   /* tamaño Titulo login*/    
   }
   
   /* OTHERS */
@@ -316,6 +316,5 @@ html {
   } 
   
   #icon {
-    width:30%;
+    width:110%;
   }
-  
