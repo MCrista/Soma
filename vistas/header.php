@@ -38,33 +38,40 @@
                         <span class="fas fa-home"></span> Inicio
                     </a>
                 </li>
-            <?php if($_SESSION['usuario']['rol'] == 1 ) { ?>
+            <?php if($_SESSION['usuario']['rol'] == 1) { ?>
                 <li class="nav-item active">
-                    <a class="nav-link" href="misDispositivos.php">
-                        <span class="fas fa-laptop"></span> Mis Dispositivos
+                    <a class="nav-link" href="proyecto.php">
+                        <span class="fas fa-laptop"></span> Proyecto
                     </a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="misReportes.php">
-                        <span class="fas fa-file-alt"></span> Mis Reportes
+                    <a class="nav-link" href="reporteTickets.php">
+                        <span class="fas fa-file-alt"></span> Reporte Tickets
                 </a>
                 </li>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#modalCrearTickets">
+                        Crear
+                </button>
+            <?php } else if($_SESSION['usuario']['rol']==3) { ?>
+                <li class="nav-item active">
+                    <a class="nav-link" href="proyecto.php">
+                        <span class="fas fa-laptop"></span> Proyecto
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="reporteTickets.php">
+                        <span class="fas fa-file-alt"></span> Reporte Tickets
+                </a>
+                </li>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#modalCrearImpedimento">
+                        Crear
+                </button>
             <?php } else if($_SESSION['usuario']['rol'] == 2) { ?>
                 <!--Administrador-->
                 <li class="nav-item active">
                     <a class="nav-link" href="usuarios.php">
                     <span class="fas fa-users"></span> Usuarios
                     </a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="asignacion.php">
-                        <span class="fas fa-ballot-check"></span> Asignacion
-                    </a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="reportes.php">
-                    <span class="fas fa-file-alt"></span> Reportes
-                </a>
                 </li>
             <?php } ?>
             </ul>
@@ -84,9 +91,6 @@
                         onclick="obtenerDatosPersonalesInicio('<?php echo $_SESSION['usuario']['id']; ?>')">
                         <span class="fas fa-user-edit"></span> Editar
                     </a>
-                    
-                    
-
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="../procesos/login/salir.php">
                     <span class="fas fa-sign-out-alt"></span> Salir
@@ -103,6 +107,6 @@
 
     <?php 
         include "inicio/modalActualizarDatosPersonales.php";
-     
-        
+        include "usuarios/modalCrearTickets.php";
+        include "usuarios/modalCrearImpedimento.php";
     ?>

@@ -4,7 +4,7 @@
             $servidor = "localhost";
             $usuario = "root";
             $password = "";
-            $db = "neincbpp_helpdesk";
+            $db = "soma_helpdesk";
             $conexion = mysqli_connect($servidor, $usuario, $password, $db);
             return $conexion;
         }

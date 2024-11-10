@@ -62,8 +62,9 @@
                         <div class="col-sm-12">
                             <label for="idRol">Rol de Usuario</label>
                             <select name="idRol" id="idRol" class="form-control">
-                                <option value="1">Cliente</option>
                                 <option value="2">Administrador</option>
+                                <option value="1">Soporte</option>
+                                <option value="3">Tecnico</option>
                             </select>
                         </div>    
                     </div>
@@ -75,7 +76,7 @@
                     </div>
             <div class="modal-footer">
                     <span class="btn btn-secondary" data-dismiss="modal">Cerrar</span>
-                    <button class="btn btn-primary">Agregar</button>
+                    <button class="btn btn-primary">Crear</button>
             </div>
         </div>
     </div>

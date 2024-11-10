@@ -102,7 +102,7 @@ session_start();
             <td>
                 <button  class="btn btn-danger btn-sm"
                 onclick="eliminarUsuario(<?php echo $mostrar['idUsuario']; ?>,<?php echo $mostrar['idPersona']; ?>)"  >
-                    <span class="fas fa-trash"></span>
+                    <span class="fas fa-trash"></span> Eliminar
                 </button>
                     
             </td>
