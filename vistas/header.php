@@ -17,12 +17,12 @@
     <link rel="stylesheet" href="../public/datatable/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="../public/fontawesome/css/all.css">
     <link rel="stylesheet" href="../public/datatable/buttons.dataTables.min.css">
-    <title>Help-Desk</title>
+    <title>Soma</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark static-top mb-1 shadow">
     <?php include "alerta.php" ?>
-        <div class="container">
+        <div class="container-fluid">
             <a class="navbar-brand" href="inicio.php">
                 <img src="../public/img/somaLogoBarra.png" width="80%" alt="Logo Gobo">
             </a>   
@@ -38,7 +38,7 @@
                         <span class="fas fa-home"></span> Inicio
                     </a>
                 </li>
-            <?php if($_SESSION['usuario']['rol'] == 1) { ?>
+            <?php if($_SESSION['usuario']['rol'] == 1 ) { ?>
                 <li class="nav-item active">
                     <a class="nav-link" href="misDispositivos.php">
                         <span class="fas fa-laptop"></span> Mis Dispositivos
@@ -67,10 +67,14 @@
                 </a>
                 </li>
             <?php } ?>
+            </ul>
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
-                    <a style="color:black" class="nav-link dropdown-toggle" href="#" 
+                    <a style="color:black; width: 200px; height: 10px; font-size: 16px;
+                     display: flex; align-items: center; justify-content: center;" 
+                        class="nav-link dropdown-toggle" href="#" 
                         role="button" data-toggle="dropdown" aria-expanded="false">
-                        <span class="fas fa-user"></span> Usuario 
+                        <span class="fas fa-user"></span>
                         <?php echo $_SESSION['usuario']['nombre']; ?>
                     </a>
                     <div class="dropdown-menu">
@@ -78,7 +82,7 @@
                         data-toggle="modal" 
                         data-target="#modalActualizarDatosPersonales"
                         onclick="obtenerDatosPersonalesInicio('<?php echo $_SESSION['usuario']['id']; ?>')">
-                        <span class="fas fa-user-edit"></span> Editar Datos
+                        <span class="fas fa-user-edit"></span> Editar
                     </a>
                     
                     

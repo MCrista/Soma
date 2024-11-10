@@ -9,10 +9,10 @@
 
 
 <!-- Page Content -->
-    <div class="container">
-        <div class="card border-0 shadow my-5">
-            <div class="card-body p-5">
-                <h1 class="fw-light">Bienvenido <?php echo $_SESSION['usuario']['nombre'];?></h1>
+    <div class="container-fluid">
+        <div class="card border-0 shadow my-1">
+            <div class="card-body p-3">
+                <h5 class="fw-light">Bienvenido <?php echo $_SESSION['usuario']['nombre'];?></h5>
                 <p class="lead"> 
                     <div class="row">
                         <div class="col-sm-4">Apellido paterno: <span id="paterno"></span></div>

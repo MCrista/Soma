@@ -32,16 +32,16 @@ session_start();
 <table class="table table-sm dt-responsive nowrap" 
         id="tablaUsuariosDataTable" style="width:100%">
     <thead>
-        <th>Apellido Paterno</th>
-        <th>Apellido Materno</th>
-        <th>Nombre</th>
+        <th>Nombre</th>    
+        <th>Primer Apellido</th>
+        <th>Segundo Apellido</th>
         <th>Edad</th>
-        <th>Telefono</th>
+        <th>Celular</th>
         <th>Correo</th>
+        <th>Sexo</th>
         <th>Usuario</th>
         <th>Ubicacion</th>
-        <th>Sexo</th>
-        <th>Reset Password</th>
+        <th>Password</th>
         <th>Activar</th>
         <th>Editar</th>
         <th>Eliminar</th>
@@ -51,28 +51,28 @@ session_start();
             while($mostrar = mysqli_fetch_array($respuesta)) {
         ?>
         <tr>
+            <td><?php echo $mostrar['nombrePersona']; ?></td>    
             <td><?php echo $mostrar['paterno']; ?></td>
             <td><?php echo $mostrar['materno']; ?></td>
-            <td><?php echo $mostrar['nombrePersona']; ?></td>
             <td><?php echo $mostrar['fechaNacimiento']; ?></td>
             <td><?php echo $mostrar['telefono']; ?></td>
             <td><?php echo $mostrar['correo']; ?></td>
+            <td><?php echo $mostrar['sexo']; ?></td>
             <td><?php echo $mostrar['nombreUsuario']; ?></td>
             <td><?php echo $mostrar['ubicacion']; ?></td>
-            <td><?php echo $mostrar['sexo']; ?></td>
             <td>
-                <button class="btn btn-success btn-sm" 
+                <button class="btn btn-secondar btn-sm" 
                         data-toggle="modal" 
                         data-target="#modalResetPassword"
                         onclick="agregarIdUsuarioReset(<?php echo $mostrar['idUsuario'] ?>)">
-                    Cambiar Password
+                    Cambiar
                 </button>
             </td>
             <td>
                 <?php 
                     if ($mostrar['estatus'] == 1) { 
                 ?>                
-                    <button class="btn btn-info btn-sm" 
+                    <button class="btn btn-success btn-sm" 
                     onclick="cambioEstatusUsuario(<?php echo $mostrar['idUsuario'] ?>, <?php echo $mostrar['estatus'] ?>)">
                         <span class="fas fa-power-off"></span> Off
                     </button>
@@ -81,7 +81,7 @@ session_start();
                         
                 ?>
 
-                    <button class="btn btn-secondar btn-sm" 
+                    <button class="btn btn-warning btn-sm" 
                     onclick="cambioEstatusUsuario(<?php echo $mostrar['idUsuario'] ?>, <?php echo $mostrar['estatus'] ?>)">
                     <!--<a class="dropdown-item" href="../procesos/login/salir.php">-->
                     <span class="fas fa-power-off"></span> On
@@ -92,7 +92,7 @@ session_start();
                 ?>
             </td>
             <td>
-                <button class="btn btn-primary btn-sm" 
+                <button class="btn btn-info btn-sm" 
                         data-toggle="modal"     
                         data-target="#modalActualizarUsuarios"
                         onclick="obtenerDatosUsuario(<?php echo $mostrar['idUsuario'] ?>)">
@@ -100,7 +100,7 @@ session_start();
                 </button>
             </td>
             <td>
-                <button  class="btn btn-black btn-sm"
+                <button  class="btn btn-danger btn-sm"
                 onclick="eliminarUsuario(<?php echo $mostrar['idUsuario']; ?>,<?php echo $mostrar['idPersona']; ?>)"  >
                     <span class="fas fa-trash"></span>
                 </button>
