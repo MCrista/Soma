@@ -1,4 +1,4 @@
-<form id="frmCrearTickets" method="POST" onsubmit="return CrearTickets()">
+<form id="frmCrearTickets" method="POST" onsubmit="return crearTickets()">  
     <div class="modal fade" id="modalCrearTickets" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -15,8 +15,8 @@
                             <input type="text" class="form-control" id="nombreCliente" name="nombreCliente" required>
                         </div>
                         <div class="col-sm-4">
-                            <label for="apellidoCliente">Apellido</label>
-                            <input type="text" class="form-control" id="apellidoCliente" name="apellidoCliente" >
+                            <label for="celular">Celular</label>
+                            <input type="text" class="form-control" id="celular" name="celular" required>
                         </div>
                         <div class="col-sm-4">
                             <label for="direccion">Direccion</label>
@@ -51,20 +51,31 @@
                             <label for="hora">Hora</label>
                             <input type="time" class="form-control" id="hora" name="hora" required>
                         </div>
+                        <div class="col-sm-4">
+                            <label for="tecnico">Tecnico</label>
+                            <input type="text" class="form-control" id="tecnico" name="tecnico" required>
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="auxiliar">Auxiliar</label>
+                            <input type="text" class="form-control" id="auxiliar" name="auxiliar" required>
+                        </div>
+
                     </div>
+                    <div>
                         <div class="row">
                             <div class="col-sm-12">
-                                <label for="ubicacion">Ubicacion</label>
+                                <label for="ubicacion">Descripcion</label>
                                 <textarea name="ubicacion" id="ubicacion" class="form-control"></textarea>
                             </div>
                         </div>
+                        
                         <div class="modal-footer">
                             <span class="btn btn-secondary" data-dismiss="modal">Cerrar</span>
                             <button class="btn btn-primary">Agregar</button>
                         </div>
+                    </div>                        
                 </div>
-            </div>
-            
+            </div>           
         </div>
     </div>
 </form>

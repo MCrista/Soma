@@ -17,17 +17,16 @@
                         Crear Reporte
                     </button>
                     <hr>
-                    <div id="tablaReporteClienteLoad"></div>
+                    <div id="tablaTicketsLoad"></div>
                 </p>
             </div>      
         </div>
     </div> 
 
 <?php 
-    include "reportesCliente/modalCrearReporte.php";
     include "footer.php" ;
 ?>
-    <script src="../public/js/reportesCliente/reportesCliente.js"></script>
+    <script src="../public/js/proyecto/tickets.js"></script>  
 <?php
 
     } else {

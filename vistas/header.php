@@ -107,6 +107,6 @@
 
     <?php 
         include "inicio/modalActualizarDatosPersonales.php";
-        include "usuarios/modalCrearTickets.php";
-        include "usuarios/modalCrearImpedimento.php";
+        include "proyecto/modalCrearTickets.php";
+        include "proyecto/modalCrearImpedimento.php";
     ?>

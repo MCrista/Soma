@@ -11,19 +11,19 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-sm-4">
-                            <label for="paterno">Apellido Paterno</label>
-                            <input type="text" class="form-control" id="paterno" name="paterno" required>
-                        </div>
-                        <div class="col-sm-4">
-                            <label for="materno">Apellido materno</label>
-                            <input type="text" class="form-control" id="materno" name="materno" >
-                        </div>
-                        <div class="col-sm-4">
                             <label for="nombre">Nombre</label>
                             <input type="text" class="form-control" id="nombre" name="nombre" required>
                         </div>
+                        <div class="col-sm-4">
+                            <label for="paterno">Primer Apellido</label>
+                            <input type="text" class="form-control" id="paterno" name="paterno" required>
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="materno">Segundo Apellido</label>
+                            <input type="text" class="form-control" id="materno" name="materno" >
+                        </div>
                     </div>
-                    <div class="row">
+                    <div class="row">                    
                         <div class="col-sm-4">
                             <label for="fechanacimiento">Fecha de nacimiento</label>
                             <input type="date" class="form-control" id="fechanacimiento" name="fechanacimiento" required>
@@ -37,7 +37,7 @@
                             </select>
                         </div>
                         <div class="col-sm-4">
-                            <label for="telefono">Telefono</label>
+                            <label for="telefono">Celular</label>
                             <input type="text" class="form-control" id="telefono" name="telefono">
                         </div>
                     </div>

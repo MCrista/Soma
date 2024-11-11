@@ -15,9 +15,10 @@
                             <input type="text" class="form-control" id="nombreCliente" name="nombreCliente" required>
                         </div>
                         <div class="col-sm-4">
-                            <label for="apellidoCliente">Apellido</label>
-                            <input type="text" class="form-control" id="apellidoCliente" name="apellidoCliente" >
+                            <label for="celular">Celular</label>
+                            <input type="text" class="form-control" id="celular" name="celular" required>
                         </div>
+
                         <div class="col-sm-4">
                             <label for="direccion">Direccion</label>
                             <input type="text" class="form-control" id="direccion" name="direccion" required>

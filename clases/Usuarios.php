@@ -24,6 +24,7 @@
                 return 0;
             }
         }
+        
 
         public function tokenG($id_session){
             $conexion = Conexion::conectar();
