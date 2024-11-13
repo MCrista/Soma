@@ -10,26 +10,29 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-2">
-                <div class="card border-3 shadow my-1">
-                    <div class="card-body p-3">
-                        <h5 class="fw-light">Lista </h5>
-                        <h5 class="fw-light">Tickets</h5>
-                        <h5 class="fw-light">Impedimentos</h5>
+                <div class="card border-0 shadow my-1">
+                    <div class="card-body p-2">
+                        <a class="nav-link" href="tablaTickets.php" >Lista</a>
+                        <a class="nav-link" href="proyecto.php">Tickets</a>
+                        <a class="nav-link" href="proyecto.php">Impedimentos</a>
                     </div>
                 </div>
             </div>
             <div class="col-2">
                 <div class="card border-0 shadow my-1">
-                    <div class="card-body p-3">
+                    <div class="card-body p-2">
                         <h5 class="fw-light">Numero de Tickets</h5>
+                        <p class="lead">
+                            <hr>
+                            <div id=""></div>   
+                        </p>
                     </div>
                 </div>
             </div>
             <div class="col-8">
                 <div class="card border-0 shadow my-1">
-                    <div class="card-body p-3">
+                    <div class="card-body p-2">
                         <p class="lead">
-                            <hr>
                             <div id="tablaTicketsLoad"></div>   
                         </p>
                     </div>

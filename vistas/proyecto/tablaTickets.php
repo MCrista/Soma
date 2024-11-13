@@ -63,21 +63,21 @@ session_start();
                 <?php 
                     if ($mostrar['estadoTickets'] == 1) { 
                 ?>                
-                    <button class="btn btn-success btn-sm" 
+                    <button class="btn btn-gray btn-sm" style="width: 80px; height: 30px;" 
                     onclick="cambioEstadoTickets(<?php echo $mostrar['idTickets'] ?>, <?php echo $mostrar['estadoTickets'] ?>)">
                         Create
                     </button>
                 <?php
                     } else if($mostrar['estadoTickets'] == 2) {                        
                 ?>
-                    <button class="btn btn-success btn-sm" 
+                    <button class="btn btn-info btn-sm" style="width: 80px; height: 30px;"
                     onclick="cambioEstadoTickets(<?php echo $mostrar['idTickets'] ?>, <?php echo $mostrar['estadoTickets'] ?>)">
-                        progress
+                        Progress
                     </button>
                 <?php
                     } else if($mostrar['estadoTickets'] == 3) {                        
                 ?>
-                    <button class="btn btn-success btn-sm" 
+                    <button class="btn btn-success btn-sm" style="width: 80px; height: 30px;"
                     onclick="cambioEstadoTickets(<?php echo $mostrar['idTickets'] ?>, <?php echo $mostrar['estadoTickets'] ?>)">
                         Done
                     </button>

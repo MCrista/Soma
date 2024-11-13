@@ -13,16 +13,17 @@
         <div class="card border-0 shadow my-1">
             <div class="card-body p-3">
                 <h5 class="fw-light">Bienvenido <?php echo $_SESSION['usuario']['nombre'];?></h5>
+                <h5 class="fw-light">Datos de Usuario</h5>
                 <p class="lead"> 
                     <div class="row">
-                        <div class="col-sm-4">Apellido paterno: <span id="paterno"></span></div>
-                        <div class="col-sm-4">Apellido materno: <span id="materno"></span></div>
                         <div class="col-sm-4">Nombre: <span id="nombre"></span></div>
+                        <div class="col-sm-4"> Primer Apellido: <span id="paterno"></span></div>
+                        <div class="col-sm-4">Segundo Apellido: <span id="materno"></span></div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-4">Telefono: <span id="telefono"></span></div>
+                        <div class="col-sm-4">Celular: <span id="telefono"></span></div>
                         <div class="col-sm-4">Correo: <span id="correo"></span></div>
-                        <div class="col-sm-4">Edad: <span id="edad"></span></div>
+                        <div class="col-sm-4">Fecha Nacimiento: <span id="edad"></span></div>
                     </div>
                     <div class="row">
                         <div class="col-sm-4"></div>

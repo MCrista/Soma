@@ -234,11 +234,11 @@
             return $respuesta;
         }
 
-        public function buscarReportesUsuario($idUSuario) {
+        /*public function buscarReportesUsuario($idUSuario) {
             $conexion = Conexion::conectar();
             $sql = "SELECT * FROM t_reportes WHERE id_usuario = '$idUSuario'";
             $respuesta = mysqli_query($conexion, $sql);
-            if (mysqli_num_rows($respuesta) > 0) {
+            if (mysqli_num_rows($respuesta) > 0){
                 return 1;
             } else {
                 return 0;
@@ -254,15 +254,15 @@
             } else {
                 return 0;
             }
-        }
+        }*/
         
         public function eliminarUsuario($datos) {
             $conexion = Conexion::conectar();
 
-            $reportes = self::buscarReportesUsuario($datos['idUsuario']);
-            $asignacion = self::buscarAsignacionPersona($datos['idPersona']);
+           /* $reportes = self::buscarReportesUsuario($datos['idUsuario']);
+            $asignacion = self::buscarAsignacionPersona($datos['idPersona']);*/
 
-            if ($reportes == 0 && $asignacion == 0){
+            /*if ($reportes == 0 && $asignacion == 0){*/
 
                 $sql = "DELETE FROM t_usuarios WHERE id_usuario = ?";
                 $query = $conexion->prepare($sql);
@@ -270,9 +270,9 @@
                 $respuesta = $query->execute();
                 $query->close();
                 return $respuesta;
-            } else {
+            /*} else {
                 return 0;
-            }
+            }*/
 
         } 
         
