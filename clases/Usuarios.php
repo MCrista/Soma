@@ -6,22 +6,30 @@
         public function loginUsuario($usuario, $password){
             $conexion = Conexion::conectar();
             
-            $sql = "SELECT * FROM t_usuarios
-                    WHERE usuario = '$usuario' AND password = '$password'";
-            $respuesta = mysqli_query($conexion, $sql);
-
-            if (mysqli_num_rows($respuesta) > 0){
-                $datosUsuario = mysqli_fetch_array($respuesta);
-                if ($datosUsuario['activo'] == 1) {
-                    $_SESSION['usuario']['nombre'] = $datosUsuario['usuario'];
-                    $_SESSION['usuario']['id'] = $datosUsuario['id_usuario'];
-                    $_SESSION['usuario']['rol'] = $datosUsuario['id_rol'];
-                    return 1;
+            // Usa una consulta preparada para prevenir inyección SQL
+            $sql = "SELECT * FROM t_usuarios WHERE usuario = ?";
+            $query = $conexion->prepare($sql);
+            $query->bind_param("s", $usuario);
+            $query->execute();
+            $respuesta = $query->get_result();
+        
+            if ($respuesta->num_rows > 0) {
+                $datosUsuario = $respuesta->fetch_array();
+                // Verificar la contraseña usando password_verify
+                if (password_verify($password, $datosUsuario['password'])) {
+                    if ($datosUsuario['activo'] == 1) {
+                        $_SESSION['usuario']['nombre'] = $datosUsuario['usuario'];
+                        $_SESSION['usuario']['id'] = $datosUsuario['id_usuario'];
+                        $_SESSION['usuario']['rol'] = $datosUsuario['id_rol'];
+                        return 1; // Inicio de sesión exitoso
+                    } else {
+                        return 0; // Usuario inactivo
+                    }
                 } else {
-                    return 0;
+                    return 0; // Contraseña incorrecta
                 }
             } else {
-                return 0;
+                return 0; // Usuario no encontrado
             }
         }
         
@@ -203,15 +211,11 @@
 
         public function resetPassword($datos) {
             $conexion = Conexion::conectar();
-            $sql = "UPDATE t_usuarios
-                    SET password = ?
-                    WHERE id_usuario = ?";
+            $sql = "UPDATE t_usuarios SET password = ? WHERE id_usuario = ?";
             $query = $conexion->prepare($sql);
-            $query->bind_param('si', $datos['password'],
-                                    $datos['idUsuario']);
+            $query->bind_param('si', $datos['password'], $datos['idUsuario']);
             $respuesta = $query->execute();
             $query->close();
-
             return $respuesta;
         }
 
