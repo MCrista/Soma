@@ -177,7 +177,7 @@
             $query->bind_param('sssssssi', $datos['paterno'],
                                             $datos['materno'],
                                             $datos['nombre'],
-                                            $datos['fechanacimiento'],
+                                            $datos['fechaNacimiento'],
                                             $datos['sexo'],
                                             $datos['telefono'],
                                             $datos['correo'],
