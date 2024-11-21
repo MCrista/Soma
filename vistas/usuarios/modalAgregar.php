@@ -75,8 +75,12 @@
                         </div>
                     </div>
             <div class="modal-footer">
-                    <span class="btn btn-secondary" data-dismiss="modal">Cerrar</span>
-                    <button class="btn btn-primary">Crear</button>
+                <div class="mb-0 form-check">
+                    <input type="checkbox" class="form-check-input" id="CheckCrearOtroUsuario">
+                    <label class="form-check-label" for="CheckCrearOtroUsuario">Agregar Otro Usuario</label>
+                </div>  
+                <span class="btn btn-secondary" data-dismiss="modal">Cerrar</span>
+                <button class="btn btn-primary">Agregar</button>
             </div>
         </div>
     </div>

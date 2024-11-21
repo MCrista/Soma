@@ -68,8 +68,17 @@
                                 <textarea name="ubicacion" id="ubicacion" class="form-control"></textarea>
                             </div>
                         </div>
+
+                        <div class="mb-3">
+                            <label for="formFileMultiple" class="form-label">Multiple files input example</label>
+                            <input class="form-control" type="file" id="formFileMultiple" multiple>
+                        </div>
                         
                         <div class="modal-footer">
+                            <div class="mb-0 form-check">
+                                <input type="checkbox" class="form-check-input" id="CheckCrearOtroTickets">
+                                <label class="form-check-label" for="CheckCrearOtroTickets">Crear Otro Tickets</label>
+                            </div>
                             <span class="btn btn-secondary" data-dismiss="modal">Cerrar</span>
                             <button class="btn btn-primary">Agregar</button>
                         </div>

@@ -7,7 +7,8 @@
 
 
 <!-- Page Content -->
-    <div class="container-fluid">
+
+    <div class="container-fluid mb-5" style = "min-height:calc(100vh - 170px);">
         <div class="row">
             <div class="col-2">
                 <div class="card border-0 shadow my-1">
@@ -21,11 +22,18 @@
             <div class="col-2">
                 <div class="card border-0 shadow my-1">
                     <div class="card-body p-2">
+                        <!--
                         <h5 class="fw-light">Numero de Tickets</h5>
                         <p class="lead">
                             <hr>
                             <div id=""></div>   
                         </p>
+                         -->
+                        <select class="form-control" size="20" aria-label="Size 3 select example">
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -40,6 +48,8 @@
             </div>
         </div>
     </div>
+
+
 <?php 
     include "footer.php" ;
 ?>

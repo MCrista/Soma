@@ -3,26 +3,35 @@ $(document).ready(function(){
     $('#tablaUsuariosLoad').load("usuarios/tablaUsuarios.php");
 });
 
-function agregarNuevoUsuario(){
 
+function agregarNuevoUsuario() {
     $.ajax({
         type: "POST",
         data: $('#frmAgregarUsuario').serialize(),
         url: "../procesos/usuarios/agregarNuevoUsuario.php",
-        success:function(respuesta) {
+        success: function(respuesta) {
             respuesta = respuesta.trim();
-            if (respuesta == 1){
+            if (respuesta == 1) {
                 $('#tablaUsuariosLoad').load("usuarios/tablaUsuarios.php");
-                $('#frmAgregarUsuario')[0].reset();
-                Swal.fire(":D","Agregado con Exito!","success");
-            }else {
-                Swal.fire(":(","Error al agregar" + respuesta,"error")
+
+                // Verificar si el checkbox "Crear Otro" está seleccionado
+                if ($('#CheckCrearOtroUsuario').is(':checked')) {
+                    // Si está seleccionado, solo limpiamos el formulario
+                    $('#frmAgregarUsuario')[0].reset();
+                } else {
+                    // Si no está seleccionado, limpiamos el formulario y cerramos el modal
+                    $('#frmAgregarUsuario')[0].reset();
+                    $('#modalAgregarUsuarios').modal('hide');
+                }
+                Swal.fire(":D", "Agregado con Exito!", "success");
+            } else {
+                Swal.fire(":(", "Error al agregar " + respuesta, "error");
             }
-        } 
+        }
     });
-    
     return false;
 }
+
 
 function obtenerDatosUsuario(idUsuario) {
     $.ajax({
