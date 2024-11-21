@@ -3,17 +3,16 @@ $(document).ready(function(){
 });
 
 function crearTickets(){
-
     $.ajax({
         type: "POST",
-        data: $('frmCrearTickets').serialize(),
+        data: $('#frmCrearTickets').serialize(),
         url: "../procesos/proyecto/crearTickets.php",
         success:function(respuesta) {
             respuesta = respuesta.trim();
             if (respuesta == 1){
                 $('#tablaTicketsLoad').load("proyecto/tablaTickets.php");
                 if ($('#CheckCrearOtroTickets').is(':checked')) {                
-                $('frmCrearTickets')[0].reset();
+                    $('#frmCrearTickets')[0].reset();
                 } else {
                     // Si no está seleccionado, limpiamos el formulario y cerramos el modal
                     $('#frmCrearTickets')[0].reset();

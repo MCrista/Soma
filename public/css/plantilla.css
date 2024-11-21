@@ -6,3 +6,9 @@ body {
     background-size: cover;
     -o-background-size: cover;
   }
+  .nav-item.active {
+    color: rgb(255, 255, 255); /* Cambia el color del texto */
+    background-color: #ffffff; /* Fondo de la opción seleccionada */
+    padding: 1px 1px; /* Ajustar el espacio interno (puedes modificar estos valores según lo necesites) */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Efecto suave */
+  }

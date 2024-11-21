@@ -6,6 +6,7 @@ session_start();
     $con = new Conexion();
     $conexion = $con->conectar();
     $sql = "SELECT tickets.id_tickets AS idTickets,
+            CONCAT('TKT-', LPAD(tickets.id_tickets, 5, '0')) AS prefijoTickets,
             tickets.nombre_cliente AS nombreCliente,
             tickets.celular AS celular,
             tickets.direccion AS direccion,
@@ -24,6 +25,7 @@ session_start();
 <table class="table table-sm dt-responsive nowrap" 
         id="tablaTicketsDataTable" style="width:100%">
     <thead>
+        <th>Id Tickets</th> <!-- se muestra en <td><?php echo $mostrar['prefijoTickets']; ?></td> -->
         <th>Nombre Cliente</th>    
         <th>Celular</th> 
         <th>Direccion</th>
@@ -41,7 +43,8 @@ session_start();
         <?php 
             while($mostrar = mysqli_fetch_array($respuesta)) {
         ?>
-        <tr>
+        <tr> 
+            <td><?php echo $mostrar['prefijoTickets']; ?></td> <!-- se muestra en <th>Id Tickets</th> -->
             <td><?php echo $mostrar['nombreCliente']; ?></td>    
             <td><?php echo $mostrar['celular']; ?></td>
             <td><?php echo $mostrar['direccion']; ?></td>

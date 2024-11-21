@@ -15,7 +15,7 @@
     
 
                 
-  <div class="container-fluid mb-5" style = "min-height:calc(100vh - 170px);">
+  <div class="container-fluid mb-5" style = "min-height:calc(100vh - 135px);">
             
      <div class="card border-0 shadow my-1">
         <div class="card-body p-3">

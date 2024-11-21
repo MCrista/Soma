@@ -18,26 +18,6 @@
         <link rel="stylesheet" href="../public/fontawesome/css/all.css">
         <link rel="stylesheet" href="../public/datatable/buttons.dataTables.min.css">
         <title>Soma</title>
-        <style>
-            /* Estilos del footer */
-            footer {
-                background-color: #333;
-                color: white;
-                text-align: center;
-                padding: 1em 0;
-                position: relative;
-                width: 100%;
-            }
-
-            footer a {
-                color: #f8d500;
-                text-decoration: none;
-            }
-
-            footer a:hover {
-                text-decoration: underline;
-            }
-        </style>
     </head>
     <body>
         <nav class="navbar navbar-expand-md navbar-light bg-dark static-top mb-1 shadow">
@@ -53,32 +33,34 @@
                 </button> 
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="inicio.php">
                             <span class="fas fa-home"></span> Inicio
                         </a>
                     </li>
                 <?php if($_SESSION['usuario']['rol'] == 1) { ?>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="proyecto.php">
                             <span class="fas fa-laptop"></span> Proyecto
                         </a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="reporteTickets.php">
                             <span class="fas fa-file-alt"></span> Reporte Tickets
                     </a>
                     </li>
+                    <ul>
                     <button class="btn btn-primary" data-toggle="modal" data-target="#modalCrearTickets">
                             Crear
                     </button>
+                    </ul>
                 <?php } else if($_SESSION['usuario']['rol']==3) { ?>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="proyecto.php">
                             <span class="fas fa-laptop"></span> Proyecto
                         </a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="reporteTickets.php">
                             <span class="fas fa-file-alt"></span> Reporte Tickets
                     </a>
@@ -88,7 +70,7 @@
                     </button>
                 <?php } else if($_SESSION['usuario']['rol'] == 2) { ?>
                     <!--Administrador-->
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="usuarios.php">
                         <span class="fas fa-users"></span> Usuarios
                         </a>
@@ -96,7 +78,7 @@
                 <?php } ?>
                 </ul>
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="notificaciones.php">
                         <span class="fas fa-bell"></span> Notificaciones   
                         <span class="top-0 start-100 translate-middle badge rounded-pill bg-danger">
@@ -131,10 +113,13 @@
                 </div>
             </div>
         </nav>
-
-
-    
-
+        <script>
+            document.querySelectorAll('.nav-item a').forEach(link => {
+                if (link.href === window.location.href) {
+                    link.parentElement.classList.add('active');
+                }
+            });
+        </script>
         <?php 
             include "inicio/modalActualizarDatosPersonales.php";
             include "proyecto/modalCrearTickets.php";
