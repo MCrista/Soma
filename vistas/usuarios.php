@@ -16,6 +16,7 @@
                 <hr>
                 <div id="tablaUsuariosLoad"></div>
             </p>
+            </div>
         </div>
     </div>
 

@@ -12,3 +12,70 @@ body {
     padding: 1px 1px; /* Ajustar el espacio interno (puedes modificar estos valores según lo necesites) */
     transition: background-color 0.3s ease, color 0.3s ease; /* Efecto suave */
   }
+
+  @media (max-width: 1000px) {
+      .navbar-nav{
+        font-size: 0.6rem; /* Reducir aún más el tamaño de la fuente en pantallas pequeñas */
+      }
+      .form-control{
+        font-size: 0.6rem; /* Reducir aún más el tamaño de la fuente en pantallas pequeñas */
+      }
+      .table {
+          font-size: 0.7rem; /* Reducir el tamaño de la fuente en pantallas medianas */
+      }
+      .btn {
+          font-size: 0.5rem; /* Reducir el tamaño de los botones */
+      }
+      .row {
+          font-size: 0.6rem; /* Reducir el tamaño de la fuente en filas */
+      }
+       .col-md-5, .col-md-4, .col-md-3, .col-md-2, .col-md-1, .col-auto {
+          font-size: 0.6rem; /* Reducir el tamaño de la fuente en las columnas */
+      }
+  }
+
+  /* Estilos para pantallas pequeñas (hasta 768px) */
+  @media (max-width: 530px) {
+      .card{
+        font-size: 0.4rem; /* Reducir aún más el tamaño de la fuente en pantallas pequeñas */
+      }
+      .dropdown-item{
+        font-size: 0.4rem; /* Reducir aún más el tamaño de la fuente en pantallas pequeñas */
+      }
+      .nav-link.dropdown-toggle{
+          font-size: 0.4rem; /* Reducir aún más el tamaño de la fuente en pantallas pequeñas */
+      }
+      .form-control{
+          font-size: 0.4rem; /* Reducir aún más el tamaño de la fuente en pantallas pequeñas */
+      }
+      .fas{
+        font-size: 0.4rem; /* Reducir aún más el tamaño de la fuente en pantallas pequeñas */
+      }
+      .navbar.brand{
+        font-size: 0.4rem; /* Reducir aún más el tamaño de la fuente en pantallas pequeñas */
+      }
+      .nav-item{
+        font-size: 0.4rem; /* Reducir aún más el tamaño de la fuente en pantallas pequeñas */
+      }
+      .nav-item.active{
+        font-size: 0.4rem; /* Reducir aún más el tamaño de la fuente en pantallas pequeñas */
+      }
+      .navbar-nav{
+        font-size: 0.4rem; /* Reducir aún más el tamaño de la fuente en pantallas pequeñas */
+      }
+      .form-control{
+        font-size: 0.4rem; /* Reducir aún más el tamaño de la fuente en pantallas pequeñas */
+      }
+      .table {
+          font-size: 0.5rem; /* Reducir aún más el tamaño de la fuente en pantallas pequeñas */
+      }
+      .btn {
+          font-size: 0.3rem; /* Reducir aún más el tamaño de los botones */
+      }
+      .row {
+          font-size: 0.4rem; /* Reducir el tamaño de la fuente en filas */
+      }
+      .col-9,.col-5, .col-4, .col-3, .col-2, .col-1, .col-auto {
+          font-size: 0.4rem; /* Reducir el tamaño de la fuente en las columnas */
+      }
+    }

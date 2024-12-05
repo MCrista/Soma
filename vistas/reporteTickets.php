@@ -11,7 +11,7 @@
 <div class="container-fluid mb-5" style = "min-height:calc(100vh - 135px);">
         <div class="card border-0 shadow my-1">
             <div class="card-body p-3">
-                <h5 class="fw-light">Reportes</h5>
+                <p class="fw-bold"><strong>Reportes</strong></p>
                 <p class="lead"> 
                     <button class="btn btn-primary" data-toggle="modal" data-target="#modalCrearReporte">
                         Crear Reporte

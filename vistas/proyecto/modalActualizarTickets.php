@@ -1,9 +1,9 @@
-<form id="frmCrearTickets" method="POST" onsubmit="return crearTickets()">  
-    <div class="modal fade" id="modalCrearTickets" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<form id="frmActualizarTickets" method="POST" onsubmit="return actualizarTickets()">  
+    <div class="modal fade" id="modalActualizarTickets" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Crear Tickets</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Actualizar Tickets</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -75,12 +75,8 @@
                         </div>
                         
                         <div class="modal-footer">
-                            <div class="mb-0 form-check">
-                                <input type="checkbox" class="form-check-input" id="CheckCrearOtroTickets">
-                                <label class="form-check-label" for="CheckCrearOtroTickets">Crear Otro Tickets</label>
-                            </div>
                             <span class="btn btn-secondary" data-dismiss="modal">Cerrar</span>
-                            <button class="btn btn-primary">Agregar</button>
+                            <button class="btn btn-primary">Actualizar</button>
                         </div>
                     </div>                        
                 </div>

@@ -44,7 +44,11 @@ session_start();
             while($mostrar = mysqli_fetch_array($respuesta)) {
         ?>
         <tr> 
-            <td><?php echo $mostrar['prefijoTickets']; ?></td> <!-- se muestra en <th>Id Tickets</th> -->
+            <td>
+                <a href="Tickets.php?id=<?php echo $mostrar['idTickets']; ?>"><!-- destino del enlace -->
+                    <?php echo $mostrar['prefijoTickets']; ?> <!-- se muestra en <th>Id Tickets</th> -->
+                </a>
+            </td>
             <td><?php echo $mostrar['nombreCliente']; ?></td>    
             <td><?php echo $mostrar['celular']; ?></td>
             <td><?php echo $mostrar['direccion']; ?></td>

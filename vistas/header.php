@@ -20,6 +20,8 @@
         <title>Soma</title>
     </head>
     <body>
+
+
         <nav class="navbar navbar-expand-md navbar-light bg-dark static-top mb-1 shadow">
         <?php include "alerta.php" ?>
             <div class="container-fluid">
@@ -88,8 +90,7 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a style="color:black; 
-                        font-size: 16px;
-                        display: flex; align-items: center; justify-content: center;" 
+                            display: flex; align-items: center; justify-content: center;" 
                             class="nav-link dropdown-toggle" href="#" 
                             role="button" data-toggle="dropdown" aria-expanded="false">
                             <span class="fas fa-user"></span>
