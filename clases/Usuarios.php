@@ -118,7 +118,7 @@
                         t_cat_roles AS roles ON usuarios.id_rol = roles.id_rol
                             INNER JOIN
                         t_persona AS persona ON usuarios.id_persona = persona.id_persona
-                            AND usuarios.id_usuario = '$idUSuario'";
+                            AND usuarios.id_usuario = $idUSuario";
             $respuesta = mysqli_query($conexion, $sql);
             $usuario = mysqli_fetch_array($respuesta);
             

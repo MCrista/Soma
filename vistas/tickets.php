@@ -9,12 +9,16 @@ include "../clases/Conexion.php";
 $con = new Conexion();
 $conexion = $con->conectar();
 
-$idTickets = $_GET['id']; // Obtener el ID del ticket desde la URL
+$mostrar = $_GET['id']; // Obtener el ID del ticket desde la URL
 
 // Consulta para obtener los detalles del ticket
-$sql = "SELECT * FROM t_tickets WHERE id_tickets = '$idTickets'";
+$sql = "SELECT id_tickets AS idTickets, nombre_cliente AS nombreCliente, celular, direccion, zona, 
+        tipo_actividad AS tipoActividad, fecha, hora, tecnico, auxiliar, descripcion, 
+        estado_tickets AS estadoTickets, resolucion
+        FROM t_tickets  
+        WHERE id_tickets = '$mostrar'";
 $respuesta = mysqli_query($conexion, $sql);
-$idTickets = mysqli_fetch_array($respuesta);
+$mostrar = mysqli_fetch_array($respuesta);
 
 ?>
 
@@ -24,10 +28,10 @@ $idTickets = mysqli_fetch_array($respuesta);
                 <div class="row">
                     <div class="col">
                         <p class="mb-1">
-                            <a href="Tickets.php?id=<?php echo $idTickets['id_tickets']; ?>">
-                                <strong><?php echo 'TKT-' . str_pad($idTickets['id_tickets'], 5, '0', STR_PAD_LEFT); ?></strong>
+                            <a href="Tickets.php?id=<?php echo $mostrar['idTickets']; ?>">
+                                <strong><?php echo 'TKT-' . str_pad($mostrar['idTickets'], 5, '0', STR_PAD_LEFT); ?></strong>
                             </a>
-                                <strong><?php echo $idTickets['tipo_actividad'] . ' ' . $idTickets['nombre_cliente']; ?></strong>
+                                <strong><?php echo $mostrar['tipoActividad'] . ' ' . $mostrar['nombreCliente']; ?></strong>
                         </p>
                     </div>
                 </div>
@@ -36,7 +40,8 @@ $idTickets = mysqli_fetch_array($respuesta);
                         <button class="btn btn-gray btn-sm mb-2" 
                                 style="color: gray;"
                                 data-toggle="modal"     
-                                data-target="#modalActualizarTickets"> Editar            
+                                data-target="#modalActualizarTickets"
+                                onclick="obtenerDatosTickets(<?php echo $mostrar['idTickets'] ?>)"> Editar            
                         </button>
                         <button class="btn btn-gray btn-sm mb-2" 
                                 style="color: gray;"
@@ -82,11 +87,11 @@ $idTickets = mysqli_fetch_array($respuesta);
                                 <p class="mb-1">Tipo de Actividad:</p>
                             </div>
                             <div class="col-5 col-md-5 col-lg-3 p-1">
-                                <p class="mb-1"><?php echo $idTickets['nombre_cliente']; ?></p>
-                                <p class="mb-1"><?php echo $idTickets['celular']; ?></p> 
-                                <p class="mb-1"><?php echo $idTickets['direccion']; ?></p> 
-                                <p class="mb-1"><?php echo $idTickets['zona']; ?></p> 
-                                <p class="mb-1"><?php echo $idTickets['tipo_actividad']; ?></p>
+                                <p class="mb-1"><?php echo $mostrar['nombreCliente']; ?></p>
+                                <p class="mb-1"><?php echo $mostrar['celular']; ?></p> 
+                                <p class="mb-1"><?php echo $mostrar['direccion']; ?></p> 
+                                <p class="mb-1"><?php echo $mostrar['zona']; ?></p> 
+                                <p class="mb-1"><?php echo $mostrar['tipoActividad']; ?></p>
                             </div>
                             <div class="col-2 col-md-2 col-lg-1 p-1" >
                                 <p class="mb-1" >Estado:</p> 
@@ -104,8 +109,8 @@ $idTickets = mysqli_fetch_array($respuesta);
                                             4 => "Bloqueado"
                                         ];
                                         
-                                        echo isset($estados[$idTickets['estado_tickets']]) 
-                                            ? $estados[$idTickets['estado_tickets']] 
+                                        echo isset($estados[$mostrar['estadoTickets']]) 
+                                            ? $estados[$mostrar['estadoTickets']] 
                                             : "Estado desconocido";
                                     ?>
                                 </p>
@@ -116,19 +121,19 @@ $idTickets = mysqli_fetch_array($respuesta);
                                             2 => "Resuelto",
                                         ];
                                         
-                                        echo isset($estados[$idTickets['resolucion']]) 
-                                            ? $estados[$idTickets['resolucion']] 
+                                        echo isset($estados[$mostrar['resolucion']]) 
+                                            ? $estados[$mostrar['resolucion']] 
                                             : "Estado desconocido";
                                     ?>
                                 </p>
-                                <p class="mb-1"><?php echo $idTickets['fecha']; ?></p>
-                                <p class="mb-1"><?php echo $idTickets['hora']; ?></p>
+                                <p class="mb-1"><?php echo $mostrar['fecha']; ?></p>
+                                <p class="mb-1"><?php echo $mostrar['hora']; ?></p>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-11">
                                 <label" for="descripcion">Descripción: </label> 
-                                <textarea name="descripcion" id="descripcion" class="form-control"><?php echo $idTickets['descripcion']; ?></textarea>
+                                <textarea name="descripcion" id="descripcion" class="form-control"><?php echo $mostrar['descripcion']; ?></textarea>
                             </div>  
                         </div>
                         <!-- 
@@ -147,7 +152,7 @@ $idTickets = mysqli_fetch_array($respuesta);
                                         style="color: gray;"
                                         data-toggle="modal"     
                                         data-target="#modalActualizarTickets"
-                                        onclick="obtenerDatosTickets(<?php echo $mostrar['idTickets'] ?>)">Añadir Comentario            
+                                        onclick="obtenerDatosTickets(<?php echo $mostrar['mostrar'] ?>)">Añadir Comentario            
                                 </button>
                             </div>  
                         </div>
@@ -156,9 +161,9 @@ $idTickets = mysqli_fetch_array($respuesta);
                         <p class="mb-1"><strong>Personas</strong></p>
                         <div class="row">                                         
                             <div class="col-12 col-md-12 col-lg-12">
-                                <p class="mb-1">Tecnico: <?php echo $idTickets['nombre_cliente']; ?></p> 
-                                <p class="mb-1">Auxiliar: <?php echo $idTickets['nombre_cliente']; ?></p> 
-                                <p class="mb-1">Informador: <?php echo $idTickets['nombre_cliente']; ?></p> 
+                                <p class="mb-1">Tecnico: <?php echo $mostrar['tecnico']; ?></p> 
+                                <p class="mb-1">Auxiliar: <?php echo $mostrar['auxiliar']; ?></p> 
+                                <p class="mb-1">Informador: <?php echo $mostrar['nombreCliente']; ?></p> 
                             </div>
                         </div>
                     </div>

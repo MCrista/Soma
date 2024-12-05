@@ -3,30 +3,31 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Actualizar Tickets</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Actualizar Ticket</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 </div>
                 <div class="modal-body">
+                    <input type="hidden" id="idTickets" name="idTickets">
                     <div class="row">
                         <div class="col-sm-4">
-                            <label for="nombreCliente">Nombre</label>
-                            <input type="text" class="form-control" id="nombreCliente" name="nombreCliente" required>
+                            <label for="nombreClienteu">Nombre</label>
+                            <input type="text" class="form-control" id="nombreClienteu" name="nombreClienteu" required>
                         </div>
                         <div class="col-sm-4">
-                            <label for="celular">Celular</label>
-                            <input type="text" class="form-control" id="celular" name="celular" required>
+                            <label for="celularu">Celular</label>
+                            <input type="text" class="form-control" id="celularu" name="celularu" required>
                         </div>
                         <div class="col-sm-4">
-                            <label for="direccion">Direccion</label>
-                            <input type="text" class="form-control" id="direccion" name="direccion" required>
+                            <label for="direccionu">Direccion</label>
+                            <input type="text" class="form-control" id="direccionu" name="direccionu" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-4">
-                            <label for="zona">Zona</label>
-                            <select class="form-control" id="zona" name="zona" required>
+                            <label for="zonau">Zona</label>
+                            <select class="form-control" id="zonau" name="zonau" required>
                                 <option value=""></option>
                                 <option value="Bogota">Bogota</option>
                                 <option value="Soacha">Soacha</option>
@@ -34,8 +35,8 @@
                             </select>
                         </div>
                         <div class="col-sm-4">
-                            <label for="tipoActividad">Tipo de Actividad</label>
-                            <select class="form-control" id="tipoActividad" name="tipoActividad" required>
+                            <label for="tipoActividadu">Tipo de Actividad</label>
+                            <select class="form-control" id="tipoActividadu" name="tipoActividadu" required>
                                 <option value=""></option>
                                 <option value="Mantenimiento Fibra">Mantenimiento Fibra</option>
                                 <option value="Mantenimiento Antena">Mantenimiento Antena</option>
@@ -44,38 +45,36 @@
                             </select>
                         </div>
                         <div class="col-sm-4">
-                            <label for="fecha">Fecha</label>
-                            <input type="date" class="form-control" id="fecha" name="fecha" required>
+                            <label for="fechau">Fecha</label>
+                            <input type="date" class="form-control" id="fechau" name="fechau" required>
                         </div>
                         <div class="col-sm-4">
-                            <label for="hora">Hora</label>
-                            <input type="time" class="form-control" id="hora" name="hora" required>
+                            <label for="horau">Hora</label>
+                            <input type="time" class="form-control" id="horau" name="horau" required>
                         </div>
                         <div class="col-sm-4">
-                            <label for="tecnico">Tecnico</label>
-                            <input type="text" class="form-control" id="tecnico" name="tecnico" required>
+                            <label for="tecnicou">Tecnico</label>
+                            <input type="text" class="form-control" id="tecnicou" name="tecnicou" required>
                         </div>
                         <div class="col-sm-4">
-                            <label for="auxiliar">Auxiliar</label>
-                            <input type="text" class="form-control" id="auxiliar" name="auxiliar" required>
+                            <label for="auxiliaru">Auxiliar</label>
+                            <input type="text" class="form-control" id="auxiliaru" name="auxiliaru" required>
                         </div>
 
                     </div>
                     <div>
                         <div class="row">
                             <div class="col-sm-12">
-                                <label for="descripcion">Descripcion</label>
-                                <textarea name="descripcion" id="descripcion" class="form-control"></textarea>
+                                <label for="descripcionu">Descripcion</label>
+                                <textarea name="descripcionu" id="descripcionu" class="form-control"></textarea>
                             </div>
                         </div>
 
                         <div class="mb-3">
                             <label for="formFileMultiple" class="form-label">Multiple files input example</label>
                             <input class="form-control" type="file" id="formFileMultiple" multiple>
-                        </div>
-                        
+                        </div>                       
                         <div class="modal-footer">
-                            <span class="btn btn-secondary" data-dismiss="modal">Cerrar</span>
                             <button class="btn btn-primary">Actualizar</button>
                         </div>
                     </div>                        
