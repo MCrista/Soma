@@ -1,9 +1,9 @@
+<?php 
+    include "header.php"; 
+    if (isset($_SESSION['usuario']) && $_SESSION['usuario']['rol'] == 1|| $_SESSION['usuario']['rol']==3){
+?>
 
 <?php
-
-// Incluir el header
-include "header.php";
-
 // Conectar con la base de datos
 include "../clases/Conexion.php";
 $con = new Conexion();
@@ -18,9 +18,15 @@ $idTickets = mysqli_fetch_array($respuesta);
 
 ?>
 
-
 <?php
 include "proyecto/detallesTickets.php"; 
 include "proyecto/modalActualizarTickets.php"; 
 include "footer.php";
+?>
+<script src="../public/js/proyecto/tickets.js"></script>  
+<?php
+
+    } else {
+        header("location:../index.html");
+    }
 ?>
