@@ -12,14 +12,39 @@ $conexion = $con->conectar();
 $mostrar = $_GET['id']; // Obtener el ID del ticket desde la URL
 
 // Consulta para obtener los detalles del ticket
-$sql = "SELECT id_tickets AS idTickets, nombre_cliente AS nombreCliente, celular, direccion, zona, 
-        tipo_actividad AS tipoActividad, fecha, hora, tecnico, auxiliar, descripcion, 
-        estado_tickets AS estadoTickets, resolucion
-        FROM t_tickets  
-        WHERE id_tickets = '$mostrar'";
+$sql = "SELECT tickets.id_tickets AS idTickets, 
+		tickets.nombre_cliente AS nombreCliente, 
+		tickets.celular, 
+		tickets.direccion, 
+		tickets.zona, 
+        tickets.tipo_actividad AS tipoActividad, 
+		tickets.fecha, 
+		tickets.hora, 
+		tickets.tecnico, 
+		tickets.auxiliar, 
+		tickets.descripcion, 
+        tickets.estado_tickets AS estadoTickets, 
+		tickets.resolucion,
+		usuarios.id_rol AS idRol,
+        persona.nombre AS nombrePersona,
+        persona.paterno AS paterno,
+        persona.materno AS materno		
+        FROM t_tickets AS tickets
+		INNER JOIN
+                t_usuarios AS usuarios
+		INNER JOIN
+                t_persona AS persona ON usuarios.id_persona = persona.id_persona
+		WHERE id_tickets ='$mostrar'";
 $respuesta = mysqli_query($conexion, $sql);
 $mostrar = mysqli_fetch_array($respuesta);
-
+/*se utilizara para consultar el nombre de usuario con un id rol 3
+$sql_tecnicos = "SELECT usuarios.id_usuario AS idUsuario, 
+                        CONCAT(persona.nombre, ' ', persona.paterno, ' ', persona.materno) AS nombreCompleto
+                 FROM t_usuarios AS usuarios
+                 INNER JOIN t_persona AS persona ON usuarios.id_persona = persona.id_persona
+                 WHERE usuarios.id_rol = 3";
+$resultado_tecnicos = mysqli_query($conexion, $sql_tecnicos);
+*/
 ?>
 
 <div class="container-fluid mb-5" style = "min-height:calc(100vh - 135px);">
@@ -161,9 +186,21 @@ $mostrar = mysqli_fetch_array($respuesta);
                         <p class="mb-1"><strong>Personas</strong></p>
                         <div class="row">                                         
                             <div class="col-12 col-md-12 col-lg-12">
+                            <!-- 
+                            <div class="form-group">
+                                <label for="tecnico">Asignar Técnico:</label>
+                                <select id="tecnico" name="tecnico" class="form-control">
+                                    <option value="">Seleccione un técnico</option>
+                                    <?php 
+                                    while ($tecnico = mysqli_fetch_array($resultado_tecnicos)) {
+                                        echo "<option value='{$tecnico['idUsuario']}'>{$tecnico['nombreCompleto']}</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            -->
                                 <p class="mb-1">Tecnico: <?php echo $mostrar['tecnico']; ?></p> 
                                 <p class="mb-1">Auxiliar: <?php echo $mostrar['auxiliar']; ?></p> 
-                                <p class="mb-1">Informador: <?php echo $mostrar['nombreCliente']; ?></p> 
                             </div>
                         </div>
                     </div>

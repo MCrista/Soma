@@ -10,7 +10,7 @@
         "hora" => $_POST['hora'], 
         "tecnico" => $_POST['tecnico'], 
         "auxiliar" => $_POST['auxiliar'],
-        "ubicacion" => $_POST['ubicacion'] 
+        "descripcion" => $_POST['descripcion'] 
     );
         
     include "../../clases/Tickets.php";

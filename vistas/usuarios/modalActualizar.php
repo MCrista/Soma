@@ -1,4 +1,3 @@
-    <!-- Modal -->
 <form id="frmActualizarUsuario" method="POST" onsubmit="return actualizarUsuario()">
     <div class="modal fade" id="modalActualizarUsuarios" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -60,8 +59,9 @@
                         <div class="col-sm-12">
                             <label for="idRolu">Rol de Usuario</label>
                             <select name="idRolu" id="idRolu" class="form-control">
-                                <option value="1">Cliente</option>
+                                <option value="1">Soporte</option>
                                 <option value="2">Administrador</option>
+                                <option value="3">Tecnico</option>
                             </select>
                         </div>    
                     </div>

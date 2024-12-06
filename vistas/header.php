@@ -1,7 +1,7 @@
 <?php
 
     session_start();
-    
+       
 ?>
 
 
@@ -41,11 +41,13 @@
                         </a>
                     </li>
                 <?php if($_SESSION['usuario']['rol'] == 1) { ?>
+                    <!--
                     <li class="nav-item">
                         <a class="nav-link" href="proyecto.php">
                             <span class="fas fa-laptop"></span> Proyecto
                         </a>
                     </li>
+                    -->
                     <li class="nav-item">
                         <a class="nav-link" href="reporteTickets.php">
                             <span class="fas fa-file-alt"></span> Reporte Tickets
@@ -57,11 +59,13 @@
                     </button>
                     </ul>
                 <?php } else if($_SESSION['usuario']['rol']==3) { ?>
+                    <!--
                     <li class="nav-item">
                         <a class="nav-link" href="proyecto.php">
                             <span class="fas fa-laptop"></span> Proyecto
                         </a>
                     </li>
+                    -->
                     <li class="nav-item">
                         <a class="nav-link" href="reporteTickets.php">
                             <span class="fas fa-file-alt"></span> Reporte Tickets

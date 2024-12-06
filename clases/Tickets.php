@@ -37,7 +37,7 @@
         $idTickets = mysqli_fetch_array($respuesta);
         return $idTickets;
     }
-*/
+
 
     public function obtenerDatosTickets($idTickets) {
         $conexion = Conexion::conectar();
@@ -45,19 +45,20 @@
                 FROM t_tickets 
                 WHERE id_tickets = $idTickets";
         $respuesta = mysqli_query($conexion, $sql);
-        $tickets = mysqli_fetch_array($respuesta);
+        $ticket = mysqli_fetch_array($respuesta);
         $datos = array(
-                'idTickets' => $tickets['idTickets'],
-                'nombreCliente' => $tickets['nombreCliente'],
-                'celular' => $tickets['celular'],
-                'direccion' => $tickets['direccion'],
-                'zona' => $tickets['zona'],
-                'tipoActividad' => $tickets['tipoActividad'],
-                'fecha' => $tickets['fecha'],
-                'hora' => $tickets['hora'],
-                'tecnico' => $tickets['tecnico'],
-                'auxiliar' => $tickets['auxiliar'],
-                'descripcion' => $tickets['descripcion']
+                'idTickets' => $ticket['idTickets'],
+                'nombreCliente' => $ticket['nombreCliente'],
+                'celular' => $ticket['celular'],
+                'direccion' => $ticket['direccion'],
+                'zona' => $ticket['zona'],
+                'tipoActividad' => $ticket['tipoActividad'],
+                'fecha' => $ticket['fecha'],
+                'hora' => $ticket['hora'],
+                'tecnico' => $ticket['tecnico'],
+                'auxiliar' => $ticket['auxiliar'],
+                'descripcion' => $ticket['descripcion']
         );
         return $datos;
     }
+*/

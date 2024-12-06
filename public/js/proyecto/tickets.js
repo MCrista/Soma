@@ -37,17 +37,17 @@ function obtenerDatosTickets(idTickets){
         url: "../procesos/proyecto/obtenerDatosTickets.php",
         success:function(respuesta) {
             respuesta = jQuery.parseJSON(respuesta);
-            $('#idTickets'). val (respuesta ['idTickets']);
-            $('#nombreClienteu'). val (respuesta ['nombreCliente']);
-            $('#celularu'). val (respuesta ['celular']);
-            $('#direccionu'). val (respuesta ['direccion']);
-            $('#zonau'). val (respuesta ['zona']);
-            $('#tipoActividadu'). val (respuesta ['tipoActividad']);
-            $('#fechau'). val (respuesta ['fecha']);
-            $('#horau'). val (respuesta ['hora']);
-            $('#tecnicou'). val (respuesta ['tecnico']);
-            $('#auxiliaru'). val (respuesta ['auxiliar']);
-            $('#descripcionu'). val (respuesta ['descripcion']);
+            $('#idTickets').val(respuesta['idTickets']);
+            $('#nombreClienteu').val(respuesta['nombreCliente']);
+            $('#celularu').val(respuesta['celular']);
+            $('#direccionu').val(respuesta['direccion']);
+            $('#zonau').val(respuesta['zona']);
+            $('#tipoActividadu').val(respuesta['tipoActividad']);
+            $('#fechau').val(respuesta['fecha']);
+            $('#horau').val(respuesta['hora']);
+            $('#tecnicou').val(respuesta['tecnico']);
+            $('#auxiliaru').val(respuesta['auxiliar']);
+            $('#descripcionu').val(respuesta['descripcion']);
         }
     });
 }

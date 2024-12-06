@@ -53,14 +53,25 @@
                             <input type="time" class="form-control" id="horau" name="horau" required>
                         </div>
                         <div class="col-sm-4">
-                            <label for="tecnicou">Tecnico</label>
-                            <input type="text" class="form-control" id="tecnicou" name="tecnicou" required>
+                            <div class="form-group">
+                                <label for="tecnico">Técnico:</label>
+                                <select id="tecnico" name="tecnico" class="form-control">
+                                    <option value=""></option>
+                                    <option value="Carlos Andres lopez">Carlos Andres lopez</option>
+                                    <option value="Marcos Rojas Mendez">Marcos Rojas Mendez</option>
+                                    <option value="Oscar Murial Toro">Oscar Murial Toro</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="col-sm-4">
-                            <label for="auxiliaru">Auxiliar</label>
-                            <input type="text" class="form-control" id="auxiliaru" name="auxiliaru" required>
+                            <label for="auxiliar">Auxiliar</label>
+                            <select id="auxiliar" name="auxiliar" class="form-control">
+                                <option value=""></option>
+                                <option value="Sofía Martínez López">Sofía Martínez López</option>
+                                <option value="Carlos Fernández García">Carlos Fernández García</option>
+                                <option value="Ana Gómez Rodríguez">Oscar Murial Toro</option>
+                            </select>
                         </div>
-
                     </div>
                     <div>
                         <div class="row">
