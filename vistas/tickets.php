@@ -47,9 +47,9 @@ $resultado_tecnicos = mysqli_query($conexion, $sql_tecnicos);
 */
 ?>
 
-<div class="container-fluid mb-5" style = "min-height:calc(100vh - 135px);">
-        <div class="card border-0 shadow my-1">
-            <div class="card-body p-3">
+<div class="container-fluid" style = "min-height:calc(100vh - 40px);">
+        <div class="card border-0 shadow my-0 pl-3 pt-1 pr-1 pb-1">
+            <div class="card-body">
                 <div class="row">
                     <div class="col">
                         <p class="mb-1">
@@ -60,39 +60,39 @@ $resultado_tecnicos = mysqli_query($conexion, $sql_tecnicos);
                         </p>
                     </div>
                 </div>
-                <div class="row mb-3">
+                <div class="row mb-1">
                     <div class="col">
-                        <button class="btn btn-gray btn-sm mb-2" 
+                        <button class="btn btn-gray mb-2" 
                                 style="color: gray;"
                                 data-toggle="modal"     
                                 data-target="#modalActualizarTickets"
                                 onclick="obtenerDatosTickets(<?php echo $mostrar['idTickets'] ?>)"> Editar            
                         </button>
-                        <button class="btn btn-gray btn-sm mb-2" 
+                        <button class="btn btn-gray mb-2" 
                                 style="color: gray;"
                                 data-toggle="modal"     
                                 data-target="#modalActualizarTickets"
                                 onclick="obtenerDatosTickets(<?php echo $mostrar['idTickets'] ?>)">Añadir Comentario            
                         </button>
-                        <button class="btn btn-gray btn-sm mb-2" 
+                        <button class="btn btn-gray mb-2" 
                                 style="color: gray;"
                                 data-toggle="modal"     
                                 data-target="#modalActualizarTickets"
                                 onclick="obtenerDatosTickets(<?php echo $mostrar['idTickets'] ?>)">Asignar            
                         </button>
-                        <button class="btn btn-gray btn-sm mb-2" 
+                        <button class="btn btn-gray mb-2" 
                                 style="color: gray;"
                                 data-toggle="modal"     
                                 data-target="#modalActualizarTickets"
                                 onclick="obtenerDatosTickets(<?php echo $mostrar['idTickets'] ?>)"> Clonar            
                         </button>
-                        <button class="btn btn-gray btn-sm mb-2" 
+                        <button class="btn btn-gray mb-2" 
                                 style="color: gray;"
                                 data-toggle="modal"     
                                 data-target="#modalActualizarTickets"
                                 onclick="obtenerDatosTickets(<?php echo $mostrar['idTickets'] ?>)">Enviar a en progreso            
                         </button>
-                        <button class="btn btn-gray btn-sm mb-2" 
+                        <button class="btn btn-gray mb-2" 
                                 style="color: gray;"
                                 data-toggle="modal"     
                                 data-target="#modalActualizarTickets"
@@ -111,7 +111,7 @@ $resultado_tecnicos = mysqli_query($conexion, $sql_tecnicos);
                                 <p class="mb-1">Zona:</p> 
                                 <p class="mb-1">Tipo de Actividad:</p>
                             </div>
-                            <div class="col-5 col-md-5 col-lg-3 p-1">
+                            <div class="col-4 col-md-5 col-lg-3 p-1">
                                 <p class="mb-1"><?php echo $mostrar['nombreCliente']; ?></p>
                                 <p class="mb-1"><?php echo $mostrar['celular']; ?></p> 
                                 <p class="mb-1"><?php echo $mostrar['direccion']; ?></p> 
@@ -173,7 +173,7 @@ $resultado_tecnicos = mysqli_query($conexion, $sql_tecnicos);
                             <div class="col-11">
                                 <label" for="descripcion">Comentarios </label>
                                 <hr>
-                                <button class="btn btn-gray btn-sm mb-2" 
+                                <button class="btn btn-gray mb-2" 
                                         style="color: gray;"
                                         data-toggle="modal"     
                                         data-target="#modalActualizarTickets"

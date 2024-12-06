@@ -61,7 +61,7 @@ session_start();
             <td><?php echo $mostrar['nombreUsuario']; ?></td>
             <td><?php echo $mostrar['ubicacion']; ?></td>
             <td>
-                <button class="btn btn-secondar btn-sm" 
+                <button class="btn btn-secondar" 
                         data-toggle="modal" 
                         data-target="#modalResetPassword"
                         onclick="agregarIdUsuarioReset(<?php echo $mostrar['idUsuario'] ?>)">
@@ -72,7 +72,7 @@ session_start();
                 <?php 
                     if ($mostrar['estatus'] == 1) { 
                 ?>                
-                    <button class="btn btn-success btn-sm" 
+                    <button class="btn btn-success" 
                     onclick="cambioEstatusUsuario(<?php echo $mostrar['idUsuario'] ?>, <?php echo $mostrar['estatus'] ?>)">
                         <span class="fas fa-power-off"></span> Off
                     </button>
@@ -81,7 +81,7 @@ session_start();
                         
                 ?>
 
-                    <button class="btn btn-warning btn-sm" 
+                    <button class="btn btn-warning" 
                     onclick="cambioEstatusUsuario(<?php echo $mostrar['idUsuario'] ?>, <?php echo $mostrar['estatus'] ?>)">
                     <!--<a class="dropdown-item" href="../procesos/login/salir.php">-->
                     <span class="fas fa-power-off"></span> On
@@ -92,7 +92,7 @@ session_start();
                 ?>
             </td>
             <td>
-                <button class="btn btn-info btn-sm" 
+                <button class="btn btn-info" 
                         data-toggle="modal"     
                         data-target="#modalActualizarUsuarios"
                         onclick="obtenerDatosUsuario(<?php echo $mostrar['idUsuario'] ?>)">
@@ -100,7 +100,7 @@ session_start();
                 </button>
             </td>
             <td>
-                <button  class="btn btn-danger btn-sm"
+                <button  class="btn btn-danger"
                 onclick="eliminarUsuario(<?php echo $mostrar['idUsuario']; ?>,<?php echo $mostrar['idPersona']; ?>)"  >
                     <span class="fas fa-trash"></span> Eliminar
                 </button>

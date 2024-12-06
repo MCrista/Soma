@@ -59,7 +59,7 @@ session_start();
             <td><?php echo $mostrar['tecnico']; ?></td>
             <td><?php echo $mostrar['auxiliar']; ?></td>
             <td>
-                <button class="btn btn-info btn-sm" 
+                <button class="btn btn-info" 
                         data-toggle="modal"     
                         data-target="#modalActualizarTickets"
                         onclick="obtenerDatosTicteks(<?php echo $mostrar['idTickets'] ?>)">
@@ -70,21 +70,21 @@ session_start();
                 <?php 
                     if ($mostrar['estadoTickets'] == 1) { 
                 ?>                
-                    <button class="btn btn-gray btn-sm" style="width: 80px; height: 30px;" 
+                    <button class="btn btn-gray" style="width: 80px; height: 30px;" 
                     onclick="cambioEstadoTickets(<?php echo $mostrar['idTickets'] ?>, <?php echo $mostrar['estadoTickets'] ?>)">
                         Create
                     </button>
                 <?php
                     } else if($mostrar['estadoTickets'] == 2) {                        
                 ?>
-                    <button class="btn btn-info btn-sm" style="width: 80px; height: 30px;"
+                    <button class="btn btn-info" style="width: 80px; height: 30px;"
                     onclick="cambioEstadoTickets(<?php echo $mostrar['idTickets'] ?>, <?php echo $mostrar['estadoTickets'] ?>)">
                         Progress
                     </button>
                 <?php
                     } else if($mostrar['estadoTickets'] == 3) {                        
                 ?>
-                    <button class="btn btn-success btn-sm" style="width: 80px; height: 30px;"
+                    <button class="btn btn-success" style="width: 80px; height: 30px;"
                     onclick="cambioEstadoTickets(<?php echo $mostrar['idTickets'] ?>, <?php echo $mostrar['estadoTickets'] ?>)">
                         Done
                     </button>
@@ -94,7 +94,7 @@ session_start();
             </td>
             <td>
                 <!-- Boton PENDIENTE por configurar -->
-                <button  class="btn btn-gray btn-sm"
+                <button  class="btn btn-gray"
                 onclick="bloquearTeickets(<?php echo $mostrar['idTickets']; ?>,<?php echo $mostrar['idPersona']; ?>)"  >
                      Bloquear
                 </button>

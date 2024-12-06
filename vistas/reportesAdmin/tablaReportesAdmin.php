@@ -65,7 +65,7 @@
                 ?> 
             </td>
             <td>
-                <button class="btn btn-info btn-sm"
+                <button class="btn btn-info"
                         onclick="obtenerDatosSolucion('<?php echo $mostrar['idReporte'];?>')"
                         data-toggle="modal" data-target="#modalAgregarSolucionReporte">
                             Solucion
@@ -76,7 +76,7 @@
                 <?php 
                     if ($mostrar['solucion'] == ""){
                 ?>
-                        <button class="btn btn-danger btn-sm"
+                        <button class="btn btn-danger"
                             onclick="eliminarReporteAdmin(<?php echo $mostrar['idReporte'] ?>)">
                             Eliminar
                         </button>

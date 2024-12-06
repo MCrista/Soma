@@ -69,7 +69,7 @@
                 <?php 
                     if ($mostrar['solucion'] == ""){
                 ?>
-                        <button class="btn btn-black btn-sm"
+                        <button class="btn btn-black"
                             onclick="eliminarReporteCliente(<?php echo $mostrar['idReporte'] ?>)">
                             <span class="fas fa-trash"></span>
                         </button>

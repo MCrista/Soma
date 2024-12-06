@@ -14,68 +14,169 @@ body {
   }
 
   @media (max-width: 1000px) {
-      .navbar-nav{
-        font-size: 0.6rem; /* Reducir aún más el tamaño de la fuente en pantallas pequeñas */
-      }
-      .form-control{
-        font-size: 0.6rem; /* Reducir aún más el tamaño de la fuente en pantallas pequeñas */
-      }
-      .table {
-          font-size: 0.7rem; /* Reducir el tamaño de la fuente en pantallas medianas */
-      }
-      .btn {
-          font-size: 0.5rem; /* Reducir el tamaño de los botones */
-      }
-      .row {
-          font-size: 0.6rem; /* Reducir el tamaño de la fuente en filas */
-      }
-       .col-md-5, .col-md-4, .col-md-3, .col-md-2, .col-md-1, .col-auto {
-          font-size: 0.6rem; /* Reducir el tamaño de la fuente en las columnas */
-      }
+    .card{
+      font-size: 0.5rem; 
+    }
+    .dropdown-item{
+      font-size: 0.5rem; 
+    }
+    .nav-link {
+      font-size: 0.35rem; /* Reducir tamaño de los enlaces */
+    }
+    .nav-link.dropdown-toggle{
+        font-size: 0.5rem; 
+    }
+    .form-control{
+        font-size: 0.5rem; 
+    }
+    .fas{
+      font-size: 0.5rem; 
+    }
+    .navbar {
+      padding: 0.1rem;  /* Espaciado dentro de la navbar */
+      box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);  /* Sombra */
+    }
+    .container-fluid{
+      padding: 0.1rem;    /* Ajustar padding (opcional) */
+    }
+    .card-body {
+      padding: 0.1rem; 
+    }
+    .card {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+    .navbar-brand {
+      font-size: 0.1rem;  /* Tamaño de fuente en pantallas grandes */
+      padding: 0.1rem;    /* Ajustar padding (opcional) */
+      width: 20%;
+    }
+    .navbar-brand img {
+      width: 30%;    /* Tamaño inicial de la imagen */
+      height: auto;  /* Mantener la proporción */
+    }
+    .nav-item{
+      font-size: 0.5rem; 
+    }
+    .nav-item.active{
+      font-size: 0.5rem; 
+    }
+    .navbar-nav{
+      font-size: 3.5rem; 
+      flex-direction: row; /* Asegura que los enlaces estén uno al lado del otro */
+      flex-wrap: nowrap; /* No permite que los enlaces se envuelvan */
+    }
+    .navbar-toggler {
+      padding: 0.1rem 0.4rem; /* Tamaño normal */
+      font-size: 1rem; /* Tamaño del texto */
+    }    
+    .navbar-toggler-icon {
+        width: 1.5em; /* Tamaño normal del ícono */
+        height: 1em;
+    }
+    .form-control{
+      font-size: 0.5rem; 
+    }
+    .img {
+      max-width: 1%;   /* La imagen no puede ser más ancha que su contenedor */
+
+    }
+    .table {
+        font-size: 0.5rem; 
+    }
+    .btn {
+        font-size: 0.5rem; /* Reducir aún más el tamaño de los botones */
+        padding: 2px 2px;
+        margin-bottom: 1px
+    }    
+    .row {
+        font-size: 0.5rem; /* Reducir el tamaño de la fuente en filas */
+    }
+    .col,.col-9,.col-8,.col-7,.col-6,.col-5, .col-4, .col-3, .col-2, .col-1, .col-auto {
+        font-size: 0.5rem; /* Reducir el tamaño de la fuente en las columnas */
+        padding: 1px; /* Ajustar padding en columnas */
+    }
   }
 
   /* Estilos para pantallas pequeñas (hasta 768px) */
   @media (max-width: 530px) {
       .card{
-        font-size: 0.4rem; /* Reducir aún más el tamaño de la fuente en pantallas pequeñas */
+        font-size: 0.35rem; 
       }
       .dropdown-item{
-        font-size: 0.4rem; /* Reducir aún más el tamaño de la fuente en pantallas pequeñas */
+        font-size: 0.35rem; 
+      }
+      .nav-link {
+        font-size: 0.35rem; /* Reducir tamaño de los enlaces */
       }
       .nav-link.dropdown-toggle{
-          font-size: 0.4rem; /* Reducir aún más el tamaño de la fuente en pantallas pequeñas */
+          font-size: 0.35rem; 
       }
       .form-control{
-          font-size: 0.4rem; /* Reducir aún más el tamaño de la fuente en pantallas pequeñas */
+          font-size: 0.35rem; 
       }
       .fas{
-        font-size: 0.4rem; /* Reducir aún más el tamaño de la fuente en pantallas pequeñas */
+        font-size: 0.35rem; 
       }
-      .navbar.brand{
-        font-size: 0.4rem; /* Reducir aún más el tamaño de la fuente en pantallas pequeñas */
+      .navbar {
+        padding: 0.1rem;  /* Espaciado dentro de la navbar */
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);  /* Sombra */
+      }
+      .container-fluid{
+        padding: 0.1rem;    /* Ajustar padding (opcional) */
+      }
+      .card-body {
+        padding: 0.1rem; 
+      }
+      .card {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+      .navbar-brand {
+        font-size: 0.1rem;  /* Tamaño de fuente en pantallas grandes */
+        padding: 0.1rem;    /* Ajustar padding (opcional) */
+      }
+      .navbar-brand img {
+        width: 30%;    /* Tamaño inicial de la imagen */
+        height: auto;  /* Mantener la proporción */
       }
       .nav-item{
-        font-size: 0.4rem; /* Reducir aún más el tamaño de la fuente en pantallas pequeñas */
+        font-size: 0.35rem; 
       }
       .nav-item.active{
-        font-size: 0.4rem; /* Reducir aún más el tamaño de la fuente en pantallas pequeñas */
+        font-size: 0.35rem; 
       }
       .navbar-nav{
-        font-size: 0.4rem; /* Reducir aún más el tamaño de la fuente en pantallas pequeñas */
+        font-size: 0.35rem; 
+      }
+      .navbar-toggler {
+        padding: 0.1rem 0.2rem; /* Tamaño normal */
+        font-size: 0.8rem; /* Tamaño del texto */
+      }    
+      .navbar-toggler-icon {
+          width: 1.5em; /* Tamaño normal del ícono */
+          height: 1em;
       }
       .form-control{
-        font-size: 0.4rem; /* Reducir aún más el tamaño de la fuente en pantallas pequeñas */
+        font-size: 0.35rem; 
+      }
+      .img {
+        max-width: 1%;   /* La imagen no puede ser más ancha que su contenedor */
+
       }
       .table {
-          font-size: 0.5rem; /* Reducir aún más el tamaño de la fuente en pantallas pequeñas */
+          font-size: 0.5rem; 
       }
       .btn {
-          font-size: 0.3rem; /* Reducir aún más el tamaño de los botones */
-      }
+          font-size: 0.35rem; /* Reducir aún más el tamaño de los botones */
+          padding: 2px 2px;
+          margin-bottom: 1px
+      }    
       .row {
-          font-size: 0.4rem; /* Reducir el tamaño de la fuente en filas */
+          font-size: 0.35rem; /* Reducir el tamaño de la fuente en filas */
       }
-      .col-9,.col-5, .col-4, .col-3, .col-2, .col-1, .col-auto {
-          font-size: 0.4rem; /* Reducir el tamaño de la fuente en las columnas */
+      .col,.col-9,.col-8,.col-7,.col-6,.col-5, .col-4, .col-3, .col-2, .col-1, .col-auto {
+          font-size: 0.35rem; /* Reducir el tamaño de la fuente en las columnas */
+          padding: 1px; /* Ajustar padding en columnas */
       }
     }
