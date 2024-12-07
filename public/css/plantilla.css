@@ -63,8 +63,6 @@ body {
     }
     .navbar-nav{
       font-size: 3.5rem; 
-      flex-direction: row; /* Asegura que los enlaces estén uno al lado del otro */
-      flex-wrap: nowrap; /* No permite que los enlaces se envuelvan */
     }
     .navbar-toggler {
       padding: 0.1rem 0.4rem; /* Tamaño normal */

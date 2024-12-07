@@ -9,7 +9,7 @@ include "../clases/Conexion.php";
 $con = new Conexion();
 $conexion = $con->conectar();
 
-$mostrar = $_GET['id']; // Obtener el ID del ticket desde la URL
+$mostrarid = $_GET['id']; // Obtener el ID del ticket desde la URL
 
 // Consulta para obtener los detalles del ticket
 $sql = "SELECT tickets.id_tickets AS idTickets, 
@@ -34,9 +34,9 @@ $sql = "SELECT tickets.id_tickets AS idTickets,
                 t_usuarios AS usuarios
 		INNER JOIN
                 t_persona AS persona ON usuarios.id_persona = persona.id_persona
-		WHERE id_tickets ='$mostrar'";
+		WHERE id_tickets ='$mostrarid'";
 $respuesta = mysqli_query($conexion, $sql);
-$mostrar = mysqli_fetch_array($respuesta);
+$mostrar= mysqli_fetch_array($respuesta);
 /*se utilizara para consultar el nombre de usuario con un id rol 3
 $sql_tecnicos = "SELECT usuarios.id_usuario AS idUsuario, 
                         CONCAT(persona.nombre, ' ', persona.paterno, ' ', persona.materno) AS nombreCompleto
@@ -53,7 +53,7 @@ $resultado_tecnicos = mysqli_query($conexion, $sql_tecnicos);
                 <div class="row">
                     <div class="col">
                         <p class="mb-1">
-                            <a href="Tickets.php?id=<?php echo $mostrar['idTickets']; ?>">
+                            <a href="Tickets.php?id=<?php echo $mostrarid['idTickets']; ?>">
                                 <strong><?php echo 'TKT-' . str_pad($mostrar['idTickets'], 5, '0', STR_PAD_LEFT); ?></strong>
                             </a>
                                 <strong><?php echo $mostrar['tipoActividad'] . ' ' . $mostrar['nombreCliente']; ?></strong>
@@ -71,8 +71,8 @@ $resultado_tecnicos = mysqli_query($conexion, $sql_tecnicos);
                         <button class="btn btn-gray mb-2" 
                                 style="color: gray;"
                                 data-toggle="modal"     
-                                data-target="#modalActualizarTickets"
-                                onclick="obtenerDatosTickets(<?php echo $mostrar['idTickets'] ?>)">Añadir Comentario            
+                                data-target="#modalActualizarUsuarios"
+                                onclick="obtenerDatosUsuario(<?php echo $mostrar['idUsuario'] ?>)">Añadir Comentario            
                         </button>
                         <button class="btn btn-gray mb-2" 
                                 style="color: gray;"
@@ -210,6 +210,7 @@ $resultado_tecnicos = mysqli_query($conexion, $sql_tecnicos);
     </div>
 
 <?php
+include "usuarios/modalActualizar.php";
 include "proyecto/modalActualizarTickets.php"; 
 include "footer.php";
 ?>

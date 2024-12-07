@@ -51,7 +51,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="reporteTickets.php">
                             <span class="fas fa-file-alt"></span> Reporte Tickets
-                    </a>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="usuarios.php">
+                        <span class="fas fa-users"></span> Usuarios
+                        </a>
                     </li>
                     <ul>
                     <button class="btn btn-primary" data-toggle="modal" data-target="#modalCrearTickets">
@@ -133,3 +138,4 @@
     </body>
 
 </html>
+<script src="../public/js/proyecto/tickets.js"></script>   

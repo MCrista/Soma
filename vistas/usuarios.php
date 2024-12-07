@@ -1,7 +1,8 @@
 
 <?php 
     include "header.php"; 
-    if (isset($_SESSION['usuario']) && $_SESSION['usuario']['rol'] == 2 || $_SESSION['usuario']['rol'] == 3) {
+    if (isset($_SESSION['usuario']) && 
+    $_SESSION['usuario']['rol'] == 2 || $_SESSION['usuario']['rol'] == 3 || $_SESSION['usuario']['rol'] == 1) {
 ?>
 
 <!-- Page Content -->
