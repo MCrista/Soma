@@ -210,7 +210,6 @@ $resultado_tecnicos = mysqli_query($conexion, $sql_tecnicos);
     </div>
 
 <?php
-include "usuarios/modalActualizar.php";
 include "proyecto/modalActualizarTickets.php"; 
 include "footer.php";
 ?>

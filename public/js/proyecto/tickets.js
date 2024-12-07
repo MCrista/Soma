@@ -36,6 +36,7 @@ function obtenerDatosTickets(idTickets){
         data: "idTickets=" + idTickets,
         url: "../procesos/proyecto/obtenerDatosTickets.php",
         success:function(respuesta) {
+            console.log(respuesta);
             respuesta = jQuery.parseJSON(respuesta);
             $('#idTickets').val(respuesta['idTickets']);
             $('#nombreClienteu').val(respuesta['nombreCliente']);
@@ -48,6 +49,30 @@ function obtenerDatosTickets(idTickets){
             $('#tecnicou').val(respuesta['tecnico']);
             $('#auxiliaru').val(respuesta['auxiliar']);
             $('#descripcionu').val(respuesta['descripcion']);
+        },
+        error: function(xhr, status, error) {
+            console.log("Error al obtener datos:", error);
         }
     });
+}
+
+function actualizarTickets() {
+    $.ajax({
+        type:"POST",
+        data:$('#frmActualizarTickets').serialize(),
+        url:"../procesos/proyecto/actualizarTickets.php",
+        success:function(respuesta) {
+            respuesta = respuesta.trim();
+            if (respuesta == 1) {
+                $('#tablaTicketsLoad').load("proyecto/tablaTickets.php");
+                $('#modalActualizarTickets').modal('hide');
+                Swal.fire(":D","Actualizado con Exito!","success");
+
+            }else {
+                Swal.fire(":(","Error al actualizar" + respuesta,"error")
+            }
+        }
+    });
+
+    return false;
 }

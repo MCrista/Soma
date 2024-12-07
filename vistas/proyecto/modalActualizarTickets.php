@@ -54,8 +54,8 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <label for="tecnico">Técnico:</label>
-                                <select id="tecnico" name="tecnico" class="form-control">
+                                <label for="tecnicou">Técnico:</label>
+                                <select id="tecnicou" name="tecnicou" class="form-control">
                                     <option value=""></option>
                                     <option value="Carlos Andres lopez">Carlos Andres lopez</option>
                                     <option value="Marcos Rojas Mendez">Marcos Rojas Mendez</option>
@@ -64,8 +64,8 @@
                             </div>
                         </div>
                         <div class="col-sm-4">
-                            <label for="auxiliar">Auxiliar</label>
-                            <select id="auxiliar" name="auxiliar" class="form-control">
+                            <label for="auxiliaru">Auxiliar</label>
+                            <select id="auxiliaru" name="auxiliaru" class="form-control">
                                 <option value=""></option>
                                 <option value="Sofía Martínez López">Sofía Martínez López</option>
                                 <option value="Carlos Fernández García">Carlos Fernández García</option>

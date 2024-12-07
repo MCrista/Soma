@@ -62,7 +62,7 @@ session_start();
                 <button class="btn btn-info" 
                         data-toggle="modal"     
                         data-target="#modalActualizarTickets"
-                        onclick="obtenerDatosTicteks(<?php echo $mostrar['idTickets'] ?>)">
+                        onclick="obtenerDatosTickets(<?php echo $mostrar['idTickets'] ?>)">
                      <span class="fas fa-pen"></span> Editar            
                 </button>
             </td>
