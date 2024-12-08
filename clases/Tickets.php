@@ -5,10 +5,10 @@ include "Conexion.php";
 class Tickets extends Conexion {
     public function crearTickets($datos){
         $conexion = Conexion::conectar();
-        $sql = "INSERT INTO t_tickets (nombre_cliente, celular, direccion, zona, tipo_actividad, fecha, hora, tecnico, auxiliar, descripcion)
-        VALUES (?,?,?,?,?,?,?,?,?,?)";
+        $sql = "INSERT INTO t_tickets (nombre_cliente, celular, direccion, zona, tipo_actividad, fecha, hora, tecnico, auxiliar, descripcion,id_usuario)
+        VALUES (?,?,?,?,?,?,?,?,?,?,?)";
         $query = $conexion->prepare($sql);
-        $query->bind_param("ssssssssss", 
+        $query->bind_param("ssssssssssi", 
             $datos['nombreCliente'],
             $datos['celular'],
             $datos['direccion'],
@@ -18,7 +18,8 @@ class Tickets extends Conexion {
             $datos['hora'],
             $datos['tecnico'],
             $datos['auxiliar'],
-            $datos['descripcion']
+            $datos['descripcion'],
+            $datos['idUsuario']
         );
         $respuesta = $query->execute();
         $idTickets = mysqli_insert_id($conexion);

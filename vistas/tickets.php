@@ -42,6 +42,7 @@ $sql_datos_tickets = "SELECT tickets.id_tickets AS idTickets,
 		tickets.descripcion, 
         tickets.estado_tickets AS estadoTickets, 
 		tickets.resolucion,
+        tickets.fecha_creacion AS fechaCreacion,
 		usuarios.id_rol AS idRol,
         persona.nombre AS nombrePersona,
         persona.paterno AS paterno,
@@ -185,12 +186,13 @@ $resultado_tecnicos = mysqli_query($conexion, $sql_tecnicos);
                                 <p class="mb-1"><?php echo $mostrar['hora']; ?></p>
                             </div>
                         </div>
-                        <div class="row mb-3">
+                        <div class="row mb-5">
                             <div class="col-11">
-                                <label" for="descripcion">Descripción: </label> 
-                                <textarea name="descripcion" id="descripcion" class="form-control"><?php echo $mostrar['descripcion']; ?></textarea>
+                                <label for="descripcion">Descripción: </label>
+                                <textarea name="descripcion" id="descripcion" class="form-control" readonly><?php echo $mostrar['descripcion']; ?></textarea>
                             </div>  
                         </div>
+
                         <!-- 
                         <div class="row mb-3">
                             <div class="col-11">
@@ -202,6 +204,7 @@ $resultado_tecnicos = mysqli_query($conexion, $sql_tecnicos);
                         <div class="row mb-3">
                             <div class="col-11">
                                 <div class="seccionComentarios">
+                                    
                                     <p class="mb-1"><strong>Comentarios</strong></p>
                                     <form id="FrmAgregarComentario" method="POST" onsubmit="return agregarComentarioTickets()">
                                         <!--se ingresa el valor idTickets obtenido desde la url-->
@@ -211,8 +214,9 @@ $resultado_tecnicos = mysqli_query($conexion, $sql_tecnicos);
                                             value="<?php echo htmlspecialchars($_SESSION['usuario']['id'], ENT_QUOTES, 'UTF-8'); ?>" required>
                                         <textarea id="comentario" name="comentario" class="form-control mb-2" placeholder="Ingresar comentario" required></textarea>
                                         <div class="d-flex justify-content-end">
-                                            <button type="submit" class="btn btn-primary">Enviar</button>
+                                            <button type="submit" class="btn btn-primary mb-3">Enviar</button>
                                         </div>
+                                        <hr>
                                         <div id="displayComentarios">
                                             <?php  while ($mostrar_comentarios= mysqli_fetch_array($respuesta)) { ?>
                                                 <div class="comentario">
@@ -246,6 +250,12 @@ $resultado_tecnicos = mysqli_query($conexion, $sql_tecnicos);
                             -->
                                 <p class="mb-1">Tecnico: <?php echo $mostrar['tecnico']; ?></p> 
                                 <p class="mb-1">Auxiliar: <?php echo $mostrar['auxiliar']; ?></p> 
+                            </div>
+                        </div>
+                        <p class="mb-1"><strong>Fechas</strong></p>
+                        <div class="row">                                         
+                            <div class="col-12 col-md-12 col-lg-12">
+                                <p class="mb-1">Creación: <?php echo $mostrar['fechaCreacion']; ?></p> 
                             </div>
                         </div>
                     </div>

@@ -1,3 +1,7 @@
+<?php 
+    if (isset($_SESSION['usuario']) && $_SESSION['usuario']['rol'] == 1|| $_SESSION['usuario']['rol']==3){
+        $idUsuario = $_SESSION['usuario']['id'];
+?>
 <form id="frmCrearTickets" method="POST" onsubmit="return crearTickets()">  
     <div class="modal fade" id="modalCrearTickets" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -79,7 +83,8 @@
                                 <textarea name="descripcion" id="descripcion" class="form-control"></textarea>
                             </div>
                         </div>
-
+                        <input type="hidden" class="form-control" id="idUsuario" name="idUsuario" 
+                            value="<?php echo htmlspecialchars($_SESSION['usuario']['id'], ENT_QUOTES, 'UTF-8'); ?>" required>
                         <div class="mb-3">
                             <label for="formFileMultiple" class="form-label">Multiple files input example</label>
                             <input class="form-control" type="file" id="formFileMultiple" multiple>
@@ -99,3 +104,9 @@
         </div>
     </div>
 </form>
+<?php
+
+    } else {
+        header("location:../index.html");
+    }
+?>
