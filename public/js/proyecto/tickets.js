@@ -1,5 +1,6 @@
 $(document).ready(function(){
     $('#tablaTicketsLoad').load("proyecto/tablaTickets.php");
+    $('#FrmAgregarComentarioLoad').load("tickets.php");
     /*$('#tablaTicketsCollapseLoad').load("proyecto/tablaTicketsCollapse.php");*/
 });
 
@@ -75,4 +76,24 @@ function actualizarTickets() {
     });
 
     return false;
+}
+
+
+function agregarComentarioTickets() {
+    $.ajax({
+        type: "POST",
+        data: $('#FrmAgregarComentario').serialize(),
+        url: "../procesos/proyecto/agregarComentarioTickets.php",
+        success: function (respuesta) {
+            respuesta = respuesta.trim();
+            if (respuesta == 1) {
+                $('#FrmAgregarComentarioLoad').load("tickets.php");
+                $('#FrmAgregarComentario')[0].reset();
+                Swal.fire(":D", "Agregado con éxito!", "success");
+            } else {
+                Swal.fire(":(", "Error al agregar: " + respuesta, "error");
+            }
+        }
+    });
+    return false; // Evitar la recarga de la página
 }

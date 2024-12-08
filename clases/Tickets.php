@@ -90,4 +90,17 @@ class Tickets extends Conexion {
         return $respuesta;
     }
 
-}
+  public function agregarComentarioTickets($datos){
+        $conexion = Conexion::conectar();
+        $sql = "INSERT INTO t_comentarios (comentario)
+        VALUES (?)";
+        $query = $conexion->prepare($sql);
+        $query->bind_param("s", 
+            $datos['comentario']
+        );
+        $respuesta = $query->execute();
+        $query->close();
+        return $respuesta;
+    } 
+
+}  

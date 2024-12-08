@@ -171,14 +171,16 @@ $resultado_tecnicos = mysqli_query($conexion, $sql_tecnicos);
                         -->
                         <div class="row mb-3">
                             <div class="col-11">
-                                <label" for="descripcion">Comentarios </label>
-                                <hr>
-                                <button class="btn btn-gray mb-2" 
-                                        style="color: gray;"
-                                        data-toggle="modal"     
-                                        data-target="#modalActualizarTickets"
-                                        onclick="obtenerDatosTickets(<?php echo $mostrar['mostrar'] ?>)">Añadir Comentario            
-                                </button>
+                                <div class="seccionComentarios"><!--comment-section-->
+                                    <p class="mb-1"><strong>Comentarios</strong></p>
+                                    <form id="FrmAgregarComentario" method="POST" onsubmit="return agregarComentarioTickets()">
+                                        <textarea id="comentario" name="comentario" class="form-control mb-2" placeholder="Ingresar comentario" required></textarea>
+                                        <div class="d-flex justify-content-end">
+                                            <button type="submit" class="btn btn-primary">Enviar</button>
+                                        </div>
+                                    </form>
+                                    <div id="displayComentarios"></div><!--commentsDisplay-->
+                                </div>
                             </div>  
                         </div>
                     </div>
