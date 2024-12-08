@@ -1,6 +1,7 @@
 <?php 
     include "header.php"; 
     if (isset($_SESSION['usuario']) && $_SESSION['usuario']['rol'] == 1|| $_SESSION['usuario']['rol']==3){
+        $idUsuario = $_SESSION['usuario']['id'];
 ?>
 
 <?php
@@ -28,7 +29,7 @@ if (!$existe) {
 }
 
 // Consulta para obtener los detalles del ticket
-$sql = "SELECT tickets.id_tickets AS idTickets, 
+$sql_datos_tickets = "SELECT tickets.id_tickets AS idTickets, 
 		tickets.nombre_cliente AS nombreCliente, 
 		tickets.celular, 
 		tickets.direccion, 
@@ -51,8 +52,21 @@ $sql = "SELECT tickets.id_tickets AS idTickets,
 		INNER JOIN
                 t_persona AS persona ON usuarios.id_persona = persona.id_persona
 		WHERE id_tickets ='$mostrarid'";
-$respuesta = mysqli_query($conexion, $sql);
+$respuesta = mysqli_query($conexion, $sql_datos_tickets);
 $mostrar= mysqli_fetch_array($respuesta);
+
+//consulta para comentarios
+$sql_comentarios = "SELECT comentarios.comentario, 
+                           comentarios.fecha_creacion, 
+                           CONCAT(persona.nombre, ' ', persona.paterno, ' ', persona.materno) AS nombreCompleto 
+                    FROM t_comentarios AS comentarios
+                    INNER JOIN t_usuarios AS usuarios ON comentarios.id_usuario = usuarios.id_usuario
+                    INNER JOIN t_persona AS persona ON usuarios.id_persona = persona.id_persona
+                    WHERE comentarios.id_tickets = $mostrarid
+                    ORDER BY comentarios.fecha_creacion DESC";
+$respuesta = mysqli_query($conexion, $sql_comentarios);
+
+
 /*se utilizara para consultar el nombre de usuario con un id rol 3
 $sql_tecnicos = "SELECT usuarios.id_usuario AS idUsuario, 
                         CONCAT(persona.nombre, ' ', persona.paterno, ' ', persona.materno) AS nombreCompleto
@@ -88,7 +102,7 @@ $resultado_tecnicos = mysqli_query($conexion, $sql_tecnicos);
                                 style="color: gray;"
                                 data-toggle="modal"     
                                 data-target="#modalActualizarUsuarios"
-                                onclick="obtenerDatosUsuario(<?php echo $mostrar['idUsuario'] ?>)">Añadir Comentario            
+                                onclick="obtenerDatosTickets(<?php echo $mostrar['idUsuario'] ?>)">Añadir Comentario            
                         </button>
                         <button class="btn btn-gray mb-2" 
                                 style="color: gray;"
@@ -190,15 +204,25 @@ $resultado_tecnicos = mysqli_query($conexion, $sql_tecnicos);
                                 <div class="seccionComentarios">
                                     <p class="mb-1"><strong>Comentarios</strong></p>
                                     <form id="FrmAgregarComentario" method="POST" onsubmit="return agregarComentarioTickets()">
-                                        <textarea id="comentario" name="comentario" class="form-control mb-2" placeholder="Ingresar comentario" required></textarea>
                                         <!--se ingresa el valor idTickets obtenido desde la url-->
-                                        <input type="hidden" class="form-control" id="idTickets" name="idTickets" 
+                                        <input type="hidden" class="form-control" id="idTickets" name="idTickets"  
                                             value="<?php echo htmlspecialchars($mostrarid, ENT_QUOTES, 'UTF-8'); ?>" required>
+                                        <input type="hidden" class="form-control" id="idUsuario" name="idUsuario" 
+                                            value="<?php echo htmlspecialchars($_SESSION['usuario']['id'], ENT_QUOTES, 'UTF-8'); ?>" required>
+                                        <textarea id="comentario" name="comentario" class="form-control mb-2" placeholder="Ingresar comentario" required></textarea>
                                         <div class="d-flex justify-content-end">
                                             <button type="submit" class="btn btn-primary">Enviar</button>
                                         </div>
+                                        <div id="displayComentarios">
+                                            <?php  while ($mostrar_comentarios= mysqli_fetch_array($respuesta)) { ?>
+                                                <div class="comentario">
+                                                    <b><?php echo ($mostrar_comentarios['nombreCompleto']); ?></b> (<?php echo ($mostrar_comentarios['fecha_creacion']); ?>) dijo:
+                                                    <p><?php echo htmlspecialchars($mostrar_comentarios['comentario']); ?></p>
+                                                    <hr>
+                                                </div>
+                                            <?php } ?>
+                                        </div>
                                     </form>
-                                    <div id="displayComentarios"></div><!--commentsDisplay-->
                                 </div>
                             </div>  
                         </div>

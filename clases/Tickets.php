@@ -100,11 +100,12 @@ class Tickets extends Conexion {
     
         // Si pasa la validación, procede con la inserción
         $conexion = Conexion::conectar();
-        $sql = "INSERT INTO t_comentarios (id_tickets, comentario)
-                VALUES (?, ?)";
+        $sql = "INSERT INTO t_comentarios (id_usuario,id_tickets, comentario)
+                VALUES (?, ?,?)";
         $query = $conexion->prepare($sql);
         $query->bind_param(
-            "is",
+            "iis",
+            $datos['idUsuario'],
             $datos['idTickets'],
             $datos['comentario']
         );

@@ -194,7 +194,6 @@
             $query->close();
             return $respuesta;
         }
-
         public function obtenerIdPersona($idUSuario) {
             $conexion = Conexion::conectar();
             $sql = "SELECT
@@ -208,7 +207,6 @@
             $idPersona = mysqli_fetch_array($respuesta)['idPersona'];
             return $idPersona;
         }
-
         public function resetPassword($datos) {
             $conexion = Conexion::conectar();
             $sql = "UPDATE t_usuarios SET password = ? WHERE id_usuario = ?";

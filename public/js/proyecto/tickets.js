@@ -1,7 +1,5 @@
 $(document).ready(function(){
     $('#tablaTicketsLoad').load("proyecto/tablaTickets.php");
-    $('#FrmAgregarComentarioLoad').load("tickets.php");
-    /*$('#tablaTicketsCollapseLoad').load("proyecto/tablaTicketsCollapse.php");*/
 });
 
 function crearTickets(){
@@ -87,7 +85,6 @@ function agregarComentarioTickets() {
         success: function (respuesta) {
             respuesta = respuesta.trim();
             if (respuesta == 1) {
-                $('#FrmAgregarComentarioLoad').load("tickets.php");
                 $('#FrmAgregarComentario')[0].reset();
                 Swal.fire(":D", "Agregado con éxito!", "success");
             } else {
