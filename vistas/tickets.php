@@ -9,7 +9,23 @@ include "../clases/Conexion.php";
 $con = new Conexion();
 $conexion = $con->conectar();
 
-$mostrarid = $_GET['id']; // Obtener el ID del ticket desde la URL
+$mostrarid = intval($_GET['id']); // Obtener el ID del ticket desde la URL
+
+$sql_id = "SELECT COUNT(*) AS total FROM t_tickets WHERE id_tickets = ?";
+$stmt = $conexion->prepare($sql_id);
+$stmt->bind_param("i", $mostrarid);
+$stmt->execute();
+$resultado = $stmt->get_result();
+$fila = $resultado->fetch_assoc();
+$existe = $fila['total'] ;
+
+if (!$existe) {
+    echo "<script>
+        alert('TICKET NO EXISTE.');
+        window.location.href = 'reporteTickets.php';
+    </script>";
+    exit;
+}
 
 // Consulta para obtener los detalles del ticket
 $sql = "SELECT tickets.id_tickets AS idTickets, 
