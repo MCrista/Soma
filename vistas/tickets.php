@@ -43,13 +43,11 @@ $sql_datos_tickets = "SELECT tickets.id_tickets AS idTickets,
         tickets.estado_tickets AS estadoTickets, 
 		tickets.resolucion,
         tickets.fecha_creacion AS fechaCreacion,
-		usuarios.id_rol AS idRol,
-        persona.nombre AS nombrePersona,
-        persona.paterno AS paterno,
-        persona.materno AS materno		
+        usuarios.id_rol AS idRol,
+        CONCAT(persona.nombre, ' ', persona.paterno, ' ', persona.materno) AS nombreCompletou		
         FROM t_tickets AS tickets
 		INNER JOIN
-                t_usuarios AS usuarios
+                t_usuarios AS usuarios ON tickets.id_usuario = usuarios.id_usuario
 		INNER JOIN
                 t_persona AS persona ON usuarios.id_persona = persona.id_persona
 		WHERE id_tickets ='$mostrarid'";
@@ -250,6 +248,7 @@ $resultado_tecnicos = mysqli_query($conexion, $sql_tecnicos);
                             -->
                                 <p class="mb-1">Tecnico: <?php echo $mostrar['tecnico']; ?></p> 
                                 <p class="mb-1">Auxiliar: <?php echo $mostrar['auxiliar']; ?></p> 
+                                <p class="mb-1">Informador: <?php echo $mostrar['nombreCompletou']; ?></p> 
                             </div>
                         </div>
                         <p class="mb-1"><strong>Fechas</strong></p>
