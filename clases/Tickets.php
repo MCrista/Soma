@@ -21,8 +21,10 @@ class Tickets extends Conexion {
             $datos['descripcion']
         );
         $respuesta = $query->execute();
+        $idTickets = mysqli_insert_id($conexion);
         $query->close();
         return $respuesta;
+        return $idTickets;
     }           
 
 
@@ -90,17 +92,26 @@ class Tickets extends Conexion {
         return $respuesta;
     }
 
-  public function agregarComentarioTickets($datos){
+    public function agregarComentarioTickets($datos) {
+        // Validar que el idTickets sea mayor a 0
+        if ($datos['idTickets'] <= 0) {
+            return false; // Retorna false si la validación falla
+        }
+    
+        // Si pasa la validación, procede con la inserción
         $conexion = Conexion::conectar();
-        $sql = "INSERT INTO t_comentarios (comentario)
-        VALUES (?)";
+        $sql = "INSERT INTO t_comentarios (id_tickets, comentario)
+                VALUES (?, ?)";
         $query = $conexion->prepare($sql);
-        $query->bind_param("s", 
+        $query->bind_param(
+            "is",
+            $datos['idTickets'],
             $datos['comentario']
         );
         $respuesta = $query->execute();
         $query->close();
+    
         return $respuesta;
-    } 
+    }
 
 }  

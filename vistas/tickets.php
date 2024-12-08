@@ -171,10 +171,13 @@ $resultado_tecnicos = mysqli_query($conexion, $sql_tecnicos);
                         -->
                         <div class="row mb-3">
                             <div class="col-11">
-                                <div class="seccionComentarios"><!--comment-section-->
+                                <div class="seccionComentarios">
                                     <p class="mb-1"><strong>Comentarios</strong></p>
                                     <form id="FrmAgregarComentario" method="POST" onsubmit="return agregarComentarioTickets()">
                                         <textarea id="comentario" name="comentario" class="form-control mb-2" placeholder="Ingresar comentario" required></textarea>
+                                        <!--se ingresa el valor idTickets obtenido desde la url-->
+                                        <input type="hidden" class="form-control" id="idTickets" name="idTickets" 
+                                            value="<?php echo htmlspecialchars($mostrarid, ENT_QUOTES, 'UTF-8'); ?>" required>
                                         <div class="d-flex justify-content-end">
                                             <button type="submit" class="btn btn-primary">Enviar</button>
                                         </div>
