@@ -106,7 +106,5 @@
 </form>
 <?php
 
-    } else {
-        header("location:../index.html");
     }
 ?>
