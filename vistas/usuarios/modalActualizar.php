@@ -10,6 +10,7 @@
                 </div>
                 <div class="modal-body">
                     <!-- Campo oculto para el idUsuario -->
+                   <input type="hidden" id="idUsuario" name="idUsuario">
                     <div class="row">
                         <div class="col-sm-4">
                             <label for="nombreu">Nombre</label>
