@@ -1,7 +1,9 @@
 <?php
+    session_start();
+    $idUsuario = $_SESSION['usuario']['id'];
 
     $datos = array(
-        'idUsuario' => $_POST['idUsuario'],
+        'idUsuario' => $idUsuario,
         'paterno' => $_POST['paternou'], 
         'materno' => $_POST['maternou'], 
         'nombre' => $_POST['nombreu'], 
