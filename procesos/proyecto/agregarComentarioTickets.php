@@ -2,8 +2,8 @@
   
     $datos = array(
         "comentario" => $_POST['comentario'],
-        "idTickets" => $_POST['idTickets'],
-        "idUsuario" => $_POST['idUsuario']
+        "idTickets" => $_POST['idTicketsu'],
+        "idUsuario" => $_POST['idUsuariou']
     );
         
     include "../../clases/Tickets.php";

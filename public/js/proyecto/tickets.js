@@ -30,6 +30,8 @@ function crearTickets(){
 }
 
 function obtenerDatosTickets(idTickets){
+    $("#idTickets").val(idTickets);
+    console.log("ID Ticket cargado:", idTickets)
     $.ajax({
         type: "POST",
         data: "idTickets=" + idTickets,
@@ -56,23 +58,24 @@ function obtenerDatosTickets(idTickets){
 }
 
 function actualizarTickets() {
+    var datos = $("#frmActualizarTickets").serialize();
+    console.log(datos); // Verifica los datos enviados
     $.ajax({
         type:"POST",
-        data:$('#frmActualizarTickets').serialize(),
         url:"../procesos/proyecto/actualizarTickets.php",
+        data: datos,
         success:function(respuesta) {
+            console.log(respuesta); // Verifica la respuesta del servidor
             respuesta = respuesta.trim();
             if (respuesta == 1) {
                 $('#tablaTicketsLoad').load("proyecto/tablaTickets.php");
                 $('#modalActualizarTickets').modal('hide');
-                Swal.fire(":D","Actualizado con Exito!","success");
-
+                $('#FrmDetallesTickets').load(location.href + " #FrmDetallesTickets"); // Recarga solo el formulario
             }else {
                 Swal.fire(":(","Error al actualizar" + respuesta,"error")
             }
         }
     });
-
     return false;
 }
 
@@ -85,8 +88,8 @@ function agregarComentarioTickets() {
         success: function (respuesta) {
             respuesta = respuesta.trim();
             if (respuesta == 1) {
+                $('#FrmAgregarComentario').load(location.href + " #FrmAgregarComentario"); // Recarga solo el formulario
                 $('#FrmAgregarComentario')[0].reset();
-                Swal.fire(":D", "Agregado con éxito!", "success");
             } else {
                 Swal.fire(":(", "Error al agregar: " + respuesta, "error");
             }

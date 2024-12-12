@@ -66,32 +66,42 @@ class Tickets extends Conexion {
         $conexion = Conexion::conectar();
         $sql = "UPDATE t_tickets SET  
                 nombre_cliente =?,
-                celular =?, 
+              celular =?, 
                 direccion =?, 
                 zona =?, 
-                tipo_actividad =?,
+                tipo_actividad =?, 
                 fecha =?, 
                 hora =?, 
                 tecnico =?, 
                 auxiliar =?, 
                 descripcion =?
-                WHERE id_tickets = ?";
+                WHERE id_tickets = ?";        
         $query = $conexion->prepare($sql);
-        $query->bind_param('ssssssssssi', $datos['nombre_cliente'],
-                                        $datos['celular'],
-                                        $datos['direccion'],
-                                        $datos['zona'],
-                                        $datos['tipo_actividad'],
-                                        $datos['fecha'],
-                                        $datos['hora'],
-                                        $datos['tecnico'],
-                                        $datos['auxiliar'],
-                                        $datos['descripcion'],
-                                        $datos['idTickets']);
+        $query->bind_param('ssssssssssi', $datos['nombreCliente'],
+            $datos['celular'],
+            $datos['direccion'],
+            $datos['zona'],
+            $datos['tipoActividad'],
+            $datos['fecha'],
+            $datos['hora'],
+            $datos['tecnico'],
+            $datos['auxiliar'],
+            $datos['descripcion'],
+            $datos['idTickets']
+        );
+        
+        // Ejecuta la consulta
         $respuesta = $query->execute();
+        
+        if (!$respuesta) {
+            // Registra cualquier error si la ejecución falla
+            error_log("Error al ejecutar SQL: " . $query->error);
+            return "Error al ejecutar la consulta SQL: " . $query->error;
+        }
+    
         $query->close();
-        return $respuesta;
-    }
+        return $respuesta; // Retorna true si la actualización fue exitosa
+    }    
 
     public function agregarComentarioTickets($datos) {
         // Validar que el idTickets sea mayor a 0

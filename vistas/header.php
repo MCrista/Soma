@@ -41,36 +41,15 @@
                         </a>
                     </li>
                 <?php if($_SESSION['usuario']['rol'] == 1) { ?>
-                    <!--
-                    <li class="nav-item">
-                        <a class="nav-link" href="proyecto.php">
-                            <span class="fas fa-laptop"></span> Proyecto
-                        </a>
-                    </li>
-                    -->
                     <li class="nav-item">
                         <a class="nav-link" href="reporteTickets.php">
                             <span class="fas fa-file-alt"></span> Reporte Tickets
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="usuarios.php">
-                        <span class="fas fa-users"></span> Usuarios
-                        </a>
-                    </li>
-                    <ul>
                     <button class="btn btn-primary" data-toggle="modal" data-target="#modalCrearTickets">
                             Crear
                     </button>
-                    </ul>
                 <?php } else if($_SESSION['usuario']['rol']==3) { ?>
-                    <!--
-                    <li class="nav-item">
-                        <a class="nav-link" href="proyecto.php">
-                            <span class="fas fa-laptop"></span> Proyecto
-                        </a>
-                    </li>
-                    -->
                     <li class="nav-item">
                         <a class="nav-link" href="reporteTickets.php">
                             <span class="fas fa-file-alt"></span> Reporte Tickets
@@ -80,7 +59,6 @@
                             Crear
                     </button>
                 <?php } else if($_SESSION['usuario']['rol'] == 2) { ?>
-                    <!--Administrador-->
                     <li class="nav-item">
                         <a class="nav-link" href="usuarios.php">
                         <span class="fas fa-users"></span> Usuarios
@@ -136,6 +114,4 @@
             include "proyecto/modalCrearImpedimento.php";
         ?>
     </body>
-
-</html>
-<script src="../public/js/proyecto/tickets.js"></script>   
+</html> 

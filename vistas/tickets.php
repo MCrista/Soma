@@ -65,15 +65,6 @@ $sql_comentarios = "SELECT comentarios.comentario,
                     ORDER BY comentarios.fecha_creacion DESC";
 $respuesta = mysqli_query($conexion, $sql_comentarios);
 
-
-/*se utilizara para consultar el nombre de usuario con un id rol 3
-$sql_tecnicos = "SELECT usuarios.id_usuario AS idUsuario, 
-                        CONCAT(persona.nombre, ' ', persona.paterno, ' ', persona.materno) AS nombreCompleto
-                 FROM t_usuarios AS usuarios
-                 INNER JOIN t_persona AS persona ON usuarios.id_persona = persona.id_persona
-                 WHERE usuarios.id_rol = 3";
-$resultado_tecnicos = mysqli_query($conexion, $sql_tecnicos);
-*/
 ?>
 
 <div class="container-fluid" style = "min-height:calc(100vh - 40px);">
@@ -126,148 +117,142 @@ $resultado_tecnicos = mysqli_query($conexion, $sql_tecnicos);
                                 data-toggle="modal"     
                                 data-target="#modalActualizarTickets"
                                 onclick="obtenerDatosTickets(<?php echo $mostrar['idTickets'] ?>)">Enviar a Bloqueado           
-                        </button>
+                        </button>                       
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-9 col-md-9 col-lg-8">
-                        <p class="mb-1"><strong>Detalles</strong></p>
-                        <div class="row">
-                            <div class="col-3 col-md-3 col-lg-2 pl-3 pt-1 pr-1 pb-1">
-                                <p class="mb-1" >Nombre Cliente:</p>
-                                <p class="mb-1">Celular:</p> 
-                                <p class="mb-1">Direccion:</p> 
-                                <p class="mb-1">Zona:</p> 
-                                <p class="mb-1">Tipo de Actividad:</p>
-                            </div>
-                            <div class="col-4 col-md-5 col-lg-3 p-1">
-                                <p class="mb-1"><?php echo $mostrar['nombreCliente']; ?></p>
-                                <p class="mb-1"><?php echo $mostrar['celular']; ?></p> 
-                                <p class="mb-1"><?php echo $mostrar['direccion']; ?></p> 
-                                <p class="mb-1"><?php echo $mostrar['zona']; ?></p> 
-                                <p class="mb-1"><?php echo $mostrar['tipoActividad']; ?></p>
-                            </div>
-                            <div class="col-2 col-md-2 col-lg-1 p-1" >
-                                <p class="mb-1" >Estado:</p> 
-                                <p class="mb-1">Resolucion:</p> 
-                                <p class="mb-1">Fecha:</p> 
-                                <p class="mb-1">Hora:</p>
-                            </div>
-                            <div class="col-2 col-md-2 col-lg-2 p-1" >
-                                <p class="mb-1">
-                                    <?php 
-                                        $estados = [
-                                            1 => "Creado",
-                                            2 => "En progreso",
-                                            3 => "Finalizado",
-                                            4 => "Bloqueado"
-                                        ];
-                                        
-                                        echo isset($estados[$mostrar['estadoTickets']]) 
-                                            ? $estados[$mostrar['estadoTickets']] 
-                                            : "Estado desconocido";
-                                    ?>
-                                </p>
-                                <p class="mb-1">
-                                    <?php 
-                                        $estados = [
-                                            1 => "Sin Resolver",
-                                            2 => "Resuelto",
-                                        ];
-                                        
-                                        echo isset($estados[$mostrar['resolucion']]) 
-                                            ? $estados[$mostrar['resolucion']] 
-                                            : "Estado desconocido";
-                                    ?>
-                                </p>
-                                <p class="mb-1"><?php echo $mostrar['fecha']; ?></p>
-                                <p class="mb-1"><?php echo $mostrar['hora']; ?></p>
-                            </div>
-                        </div>
-                        <div class="row mb-5">
-                            <div class="col-11">
-                                <label for="descripcion">Descripción: </label>
-                                <textarea name="descripcion" id="descripcion" class="form-control" readonly><?php echo $mostrar['descripcion']; ?></textarea>
-                            </div>  
-                        </div>
-
-                        <!-- 
-                        <div class="row mb-3">
-                            <div class="col-11">
-                                <label for="formFileMultiple" class="form-label">Adjuntos</label>
-                                <input class="form-control" type="file" id="formFileMultiple" multiple>
-                            </div>  
-                        </div>
-                        -->
-                        <div class="row mb-3">
-                            <div class="col-11">
-                                <div class="seccionComentarios">
-                                    
-                                    <p class="mb-1"><strong>Comentarios</strong></p>
-                                    <form id="FrmAgregarComentario" method="POST" onsubmit="return agregarComentarioTickets()">
-                                        <!--se ingresa el valor idTickets obtenido desde la url-->
-                                        <input type="hidden" class="form-control" id="idTickets" name="idTickets"  
-                                            value="<?php echo htmlspecialchars($mostrarid, ENT_QUOTES, 'UTF-8'); ?>" required>
-                                        <input type="hidden" class="form-control" id="idUsuario" name="idUsuario" 
-                                            value="<?php echo htmlspecialchars($_SESSION['usuario']['id'], ENT_QUOTES, 'UTF-8'); ?>" required>
-                                        <textarea id="comentario" name="comentario" class="form-control mb-2" placeholder="Ingresar comentario" required></textarea>
-                                        <div class="d-flex justify-content-end">
-                                            <button type="submit" class="btn btn-primary mb-3">Enviar</button>
-                                        </div>
-                                        <hr>
-                                        <div id="displayComentarios">
-                                            <?php  while ($mostrar_comentarios= mysqli_fetch_array($respuesta)) { ?>
-                                                <div class="comentario">
-                                                    <b><?php echo ($mostrar_comentarios['nombreCompleto']); ?></b> (<?php echo ($mostrar_comentarios['fecha_creacion']); ?>) dijo:
-                                                    <p><?php echo htmlspecialchars($mostrar_comentarios['comentario']); ?></p>
-                                                    <hr>
-                                                </div>
-                                            <?php } ?>
-                                        </div>
-                                    </form>
+                <form id="FrmDetallesTickets" method="POST" onsubmit="return actualizarTickets()">
+                    <div class="row">
+                        <div class="col-9 col-md-9 col-lg-8">
+                            <p class="mb-1"><strong>Detalles</strong></p>
+                            <div class="row">
+                                <div class="col-3 col-md-3 col-lg-2 pl-3 pt-1 pr-1 pb-1">
+                                    <p class="mb-1" >Nombre Cliente:</p>
+                                    <p class="mb-1">Celular:</p> 
+                                    <p class="mb-1">Direccion:</p> 
+                                    <p class="mb-1">Zona:</p> 
+                                    <p class="mb-1">Tipo de Actividad:</p>
                                 </div>
-                            </div>  
+                                <div class="col-4 col-md-5 col-lg-3 p-1">
+                                    <p class="mb-1"><?php echo $mostrar['nombreCliente']; ?></p>
+                                    <p class="mb-1"><?php echo $mostrar['celular']; ?></p> 
+                                    <p class="mb-1"><?php echo $mostrar['direccion']; ?></p> 
+                                    <p class="mb-1"><?php echo $mostrar['zona']; ?></p> 
+                                    <p class="mb-1"><?php echo $mostrar['tipoActividad']; ?></p>
+                                </div>
+                                <div class="col-2 col-md-2 col-lg-1 p-1" >
+                                    <p class="mb-1" >Estado:</p> 
+                                    <p class="mb-1">Resolucion:</p> 
+                                    <p class="mb-1">Fecha:</p> 
+                                    <p class="mb-1">Hora:</p>
+                                </div>
+                                <div class="col-2 col-md-2 col-lg-2 p-1" >
+                                    <p class="mb-1">
+                                        <?php 
+                                            $estados = [
+                                                1 => "Creado",
+                                                2 => "En progreso",
+                                                3 => "Finalizado",
+                                                4 => "Bloqueado"
+                                            ];
+                                            
+                                            echo isset($estados[$mostrar['estadoTickets']]) 
+                                                ? $estados[$mostrar['estadoTickets']] 
+                                                : "Estado desconocido";
+                                        ?>
+                                    </p>
+                                    <p class="mb-1">
+                                        <?php 
+                                            $estados = [
+                                                1 => "Sin Resolver",
+                                                2 => "Resuelto",
+                                            ];
+                                            
+                                            echo isset($estados[$mostrar['resolucion']]) 
+                                                ? $estados[$mostrar['resolucion']] 
+                                                : "Estado desconocido";
+                                        ?>
+                                    </p>
+                                    <p class="mb-1"><?php echo $mostrar['fecha']; ?></p>
+                                    <p class="mb-1"><?php echo $mostrar['hora']; ?></p>
+                                </div>
+                            </div>
+                            <div class="row mb-5">
+                                <div class="col-11">
+                                    <label for="descripcion">Descripción: </label>
+                                    <textarea name="descripcion" id="descripcion" class="form-control" readonly><?php echo $mostrar['descripcion']; ?></textarea>
+                                </div>  
+                            </div>                            
+                        </div>
+                        <div  class="col-3 pl-1 pt-1 pr-3 pb-1">
+                            <p class="mb-1"><strong>Personas</strong></p>
+                            <div class="row">                                         
+                                <div class="col-12 col-md-12 col-lg-12">
+                                <!-- 
+                                <div class="form-group">
+                                    <label for="tecnico">Asignar Técnico:</label>
+                                    <select id="tecnico" name="tecnico" class="form-control">
+                                        <option value="">Seleccione un técnico</option>
+                                        <?php 
+                                        while ($tecnico = mysqli_fetch_array($resultado_tecnicos)) {
+                                            echo "<option value='{$tecnico['idUsuario']}'>{$tecnico['nombreCompleto']}</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                -->
+                                    <p class="mb-1">Tecnico: <?php echo $mostrar['tecnico']; ?></p> 
+                                    <p class="mb-1">Auxiliar: <?php echo $mostrar['auxiliar']; ?></p> 
+                                    <p class="mb-1">Informador: <?php echo $mostrar['nombreCompletou']; ?></p> 
+                                </div>
+                            </div>
+                            <p class="mb-1"><strong>Fechas</strong></p>
+                            <div class="row">                                         
+                                <div class="col-12 col-md-12 col-lg-12">
+                                    <p class="mb-1">Creación: <?php echo $mostrar['fechaCreacion']; ?></p> 
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div  class="col-3 pl-1 pt-1 pr-3 pb-1">
-                        <p class="mb-1"><strong>Personas</strong></p>
-                        <div class="row">                                         
-                            <div class="col-12 col-md-12 col-lg-12">
-                            <!-- 
-                            <div class="form-group">
-                                <label for="tecnico">Asignar Técnico:</label>
-                                <select id="tecnico" name="tecnico" class="form-control">
-                                    <option value="">Seleccione un técnico</option>
-                                    <?php 
-                                    while ($tecnico = mysqli_fetch_array($resultado_tecnicos)) {
-                                        echo "<option value='{$tecnico['idUsuario']}'>{$tecnico['nombreCompleto']}</option>";
-                                    }
-                                    ?>
-                                </select>
+                </form>
+                      
+                <form id="FrmAgregarComentario" method="POST" onsubmit="return agregarComentarioTickets()">
+                    <div class="row mb-3">
+                        <div class="col-11">
+                            <div class="seccionComentarios">
+                                <p class="mb-1"><strong>Comentarios</strong></p>                           
+                                <!--se ingresa el valor idTickets obtenido desde la url-->
+                                <input type="hidden" class="form-control" id="idTicketsu" name="idTicketsu"  
+                                        value="<?php echo htmlspecialchars($mostrarid, ENT_QUOTES, 'UTF-8'); ?>">
+                                <input type="hidden" class="form-control" id="idUsuariou" name="idUsuariou" 
+                                        value="<?php echo htmlspecialchars($_SESSION['usuario']['id'], ENT_QUOTES, 'UTF-8'); ?>">
+                                <textarea id="comentario" name="comentario" class="form-control mb-2" placeholder="Ingresar comentario" required></textarea>
+                                <div class="d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-primary mb-3">Enviar</button>
+                                </div>
+                                <hr>
+                                <div id="displayComentarios">
+                                    <?php  while ($mostrar_comentarios= mysqli_fetch_array($respuesta)) { ?>
+                                        <div class="comentario">
+                                            <b><?php echo ($mostrar_comentarios['nombreCompleto']); ?></b> (<?php echo ($mostrar_comentarios['fecha_creacion']); ?>) dijo:
+                                            <p><?php echo htmlspecialchars($mostrar_comentarios['comentario']); ?></p>
+                                            <hr>
+                                        </div>
+                                    <?php } ?>
+                                </div>                            
                             </div>
-                            -->
-                                <p class="mb-1">Tecnico: <?php echo $mostrar['tecnico']; ?></p> 
-                                <p class="mb-1">Auxiliar: <?php echo $mostrar['auxiliar']; ?></p> 
-                                <p class="mb-1">Informador: <?php echo $mostrar['nombreCompletou']; ?></p> 
-                            </div>
-                        </div>
-                        <p class="mb-1"><strong>Fechas</strong></p>
-                        <div class="row">                                         
-                            <div class="col-12 col-md-12 col-lg-12">
-                                <p class="mb-1">Creación: <?php echo $mostrar['fechaCreacion']; ?></p> 
-                            </div>
-                        </div>
+                        </div>  
                     </div>
-                </div>   
+                </form>
+
+
             </div>
         </div>      
     </div>
 
 <?php
-include "proyecto/modalActualizarTickets.php"; 
-include "footer.php";
+    include "proyecto/modalActualizarTickets.php"; 
+    include "footer.php";
 ?>
-<script src="../public/js/proyecto/tickets.js"></script>  
 <?php
 
     } else {

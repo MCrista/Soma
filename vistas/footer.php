@@ -11,6 +11,7 @@
         <script src="../public/datatable/dataTables.responsive.min.js"></script>
         <script src="../public/datatable/responsive.bootstrap4.min.js"></script>
         <script src="../public/js/inicio/actualizarPersonales.js"></script>   
+        <script src="../public/js/proyecto/tickets.js"></script><!--aplica para todas las vistas con footer-->
         <script src="../public/datatable/dataTables.buttons.min.js"></script>
         <script src="../public/datatable/jszip.min.js"></script>
         <script src="../public/datatable/pdfmake.min.js"></script>

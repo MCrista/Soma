@@ -29,9 +29,8 @@
 
 <?php 
     include "proyecto/modalActualizarTickets.php"; 
-    include "footer.php" ;
+    include "footer.php";
 ?>
-    <script src="../public/js/proyecto/tickets.js"></script>  
 <?php
 
     } else {
