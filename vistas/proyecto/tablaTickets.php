@@ -38,7 +38,9 @@ session_start();
         <th>Tecnico</th>
         <th>Auxiliar</th>
         <th>Estado</th>
-        <th>Editar</th>
+        <?php if ($_SESSION['usuario']['rol'] == 1): ?>  <!-- Solo mostrar si el rol es 1 -->
+            <th>Editar</th>
+        <?php endif; ?>
     </thead>
     <tbody>
         <?php 
@@ -74,14 +76,16 @@ session_start();
                     }
                 ?>
             </td>
-            <td>
-                <button class="btn btn-info" 
-                        data-toggle="modal"     
-                        data-target="#modalActualizarTickets"
-                        onclick="obtenerDatosTickets(<?php echo $mostrar['idTickets'] ?>)">
-                     <span class="fas fa-pen"></span> Editar            
-                </button>
-            </td>
+            <?php if ($_SESSION['usuario']['rol'] == 1): ?>  <!-- Solo mostrar el botón de editar si el rol es 1 -->
+                <td>
+                    <button class="btn btn-info" 
+                            data-toggle="modal"     
+                            data-target="#modalActualizarTickets"
+                            onclick="obtenerDatosTickets(<?php echo $mostrar['idTickets'] ?>)">
+                         <span class="fas fa-pen"></span> Editar            
+                    </button>
+                </td>
+            <?php endif; ?>
         </tr> 
         <?php } ?>           
     </tbody>
