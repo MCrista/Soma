@@ -126,4 +126,44 @@ class Tickets extends Conexion {
         return $respuesta;
     }
 
+    public function cambioEstatusTickets($idTickets, $estatusTickets) {
+        $conexion = Conexion::conectar();
+    
+        // Validar cambios de estado permitidos
+        $sqlValidar = "SELECT estado_tickets FROM t_tickets WHERE id_tickets = ?";
+        $queryValidar = $conexion->prepare($sqlValidar);
+        $queryValidar->bind_param('i', $idTickets);
+        $queryValidar->execute();
+        $queryValidar->bind_result($estadoActual);
+        $queryValidar->fetch();
+        $queryValidar->close();
+    
+        // Definir transiciones permitidas
+        $transiciones = [
+            1 => [2, 4],  // Creado puede ir a En Progreso (2) o Cancelado (4)
+            2 => [3, 4, 5], // En Progreso puede ir a Finalizado (3), Cancelado (4) o Bloqueado (5)
+            5 => [2, 4], // Bloqueado puede ir a En Progreso (2) o Cancelado (4)
+        ];
+    
+        // Verificar si la transición es válida
+        if (!isset($transiciones[$estadoActual]) || !in_array($estatusTickets, $transiciones[$estadoActual])) {
+            return 0; // Transición no permitida
+        }
+    
+        // Si el estado es Finalizado (3), se actualizará la resolución a 2
+        if ($estatusTickets == 3) {
+            $sql = "UPDATE t_tickets SET estado_tickets = ?, resolucion = 2 WHERE id_tickets = ?";
+        } else {
+            // Si no es Finalizado, solo actualizamos el estado
+            $sql = "UPDATE t_tickets SET estado_tickets = ? WHERE id_tickets = ?";
+        }
+    
+        $query = $conexion->prepare($sql);
+        $query->bind_param('ii', $estatusTickets, $idTickets);
+        $respuesta = $query->execute();
+        $query->close();
+    
+        return $respuesta ? 1 : 0;
+    }
+    
 }  

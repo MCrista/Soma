@@ -97,3 +97,23 @@ function agregarComentarioTickets() {
     });
     return false; // Evitar la recarga de la página
 }
+
+function cambioEstatusTickets(idTickets, estatusTickets) {
+    $.ajax({
+        type: "POST",
+        data: {
+            idTickets: idTickets,
+            estatusTickets: estatusTickets
+        },
+        url: "../procesos/proyecto/extras/cambioEstatusTickets.php",
+        success: function(respuesta) {
+            respuesta = respuesta.trim();
+            if (respuesta == 1) {
+                location.reload();
+                Swal.fire(":D", "Cambio de estatus con éxito!", "success"); 
+            } else {
+                Swal.fire(":(", "Error al cambiar el estatus: " + respuesta, "error");
+            }
+        }
+    });
+}
