@@ -2,30 +2,34 @@ $(document).ready(function(){
     $('#tablaTicketsLoad').load("proyecto/tablaTickets.php");
 });
 
-function crearTickets(){
+function crearTickets() {
     $.ajax({
         type: "POST",
         data: $('#frmCrearTickets').serialize(),
         url: "../procesos/proyecto/crearTickets.php",
-        success:function(respuesta) {
+        success: function(respuesta) {
             respuesta = respuesta.trim();
-            if (respuesta == 1){
+            if (!isNaN(respuesta) && respuesta > 0) {  // Verificar si la respuesta es un número (ID)
+                const nuevoIdTicket = respuesta;  // El ID del ticket creado
+
                 $('#tablaTicketsLoad').load("proyecto/tablaTickets.php");
-                /*$('#tablaTicketsCollapseLoad').load("proyecto/tablaTicketsCollapse.php");*/
+
+                // Limpiar el formulario y cerrar el modal si no se desea crear otro ticket
                 if ($('#CheckCrearOtroTickets').is(':checked')) {                
                     $('#frmCrearTickets')[0].reset();
                 } else {
-                    // Si no está seleccionado, limpiamos el formulario y cerramos el modal
                     $('#frmCrearTickets')[0].reset();
                     $('#modalCrearTickets').modal('hide');
-                }   
-                Swal.fire(":D","Agregado con Exito!","success");
-            }else {
-                Swal.fire(":(","Error al agregar" + respuesta,"error")
+                }
+
+                // Mostrar mensaje con el ID del ticket recién creado
+                Swal.fire(":D", `¡Ticket TKT-${nuevoIdTicket} creado con éxito!`, "success");
+            } else {
+                Swal.fire(":(", "Error al agregar el ticket: " + respuesta, "error");
             }
-        } 
+        }
     });
-    
+
     return false;
 }
 

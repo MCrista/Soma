@@ -3,10 +3,10 @@
 include "Conexion.php";
 
 class Tickets extends Conexion {
-    public function crearTickets($datos){
+    public function crearTickets($datos) {
         $conexion = Conexion::conectar();
-        $sql = "INSERT INTO t_tickets (nombre_cliente, celular, direccion, zona, tipo_actividad, fecha, hora, tecnico, auxiliar, descripcion,id_usuario)
-        VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+        $sql = "INSERT INTO t_tickets (nombre_cliente, celular, direccion, zona, tipo_actividad, fecha, hora, tecnico, auxiliar, descripcion, id_usuario)
+                VALUES (?,?,?,?,?,?,?,?,?,?,?)";
         $query = $conexion->prepare($sql);
         $query->bind_param("ssssssssssi", 
             $datos['nombreCliente'],
@@ -22,10 +22,10 @@ class Tickets extends Conexion {
             $datos['idUsuario']
         );
         $respuesta = $query->execute();
-        $idTickets = mysqli_insert_id($conexion);
+        $idTickets = mysqli_insert_id($conexion); // Obtener el ID del ticket recién insertado
         $query->close();
-        return $respuesta;
-        return $idTickets;
+        
+        return $idTickets;  // Devolver el ID del ticket creado
     }           
 
 
