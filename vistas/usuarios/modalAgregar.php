@@ -65,6 +65,7 @@
                                 <option value="2">Administrador</option>
                                 <option value="1">Soporte</option>
                                 <option value="3">Tecnico</option>
+                                <option value="4">Auxiliar</option>
                             </select>
                         </div>    
                     </div>

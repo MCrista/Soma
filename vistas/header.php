@@ -58,6 +58,15 @@
                     <button class="btn btn-primary" data-toggle="modal" data-target="#modalCrearImpedimento">
                             Crear
                     </button>
+                <?php } else if($_SESSION['usuario']['rol']==4) { ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="reporteTickets.php">
+                            <span class="fas fa-file-alt"></span> Reporte Tickets
+                        </a>
+                    </li>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#modalCrearImpedimento">
+                            Crear
+                    </button>
                 <?php } else if($_SESSION['usuario']['rol'] == 2) { ?>
                     <li class="nav-item">
                         <a class="nav-link" href="usuarios.php">

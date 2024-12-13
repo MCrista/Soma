@@ -1,6 +1,7 @@
 <?php 
     include "header.php"; 
-    if (isset($_SESSION['usuario']) && $_SESSION['usuario']['rol'] == 1|| $_SESSION['usuario']['rol']==3){
+    if (isset($_SESSION['usuario']) && $_SESSION['usuario']['rol'] == 1|| $_SESSION['usuario']['rol']== 3 
+    || $_SESSION['usuario']['rol'] == 4 ){
         include "../clases/Conexion.php";
         $con = new Conexion();
         $conexion = $con->conectar();
@@ -32,7 +33,6 @@
     include "footer.php";
 ?>
 <?php
-
     } else {
         header("location:../index.html");
     }
