@@ -6,7 +6,7 @@ session_start();
     $con = new Conexion();
     $conexion = $con->conectar();
     $sql = "SELECT tickets.id_tickets AS idTickets,
-            CONCAT('TKT-', LPAD(tickets.id_tickets, 5, '0')) AS prefijoTickets,
+            CONCAT('TKT-', tickets.id_tickets) AS prefijoTickets,
             tickets.nombre_cliente AS nombreCliente,
             tickets.celular AS celular,
             tickets.direccion AS direccion,
@@ -17,8 +17,10 @@ session_start();
             tickets.tecnico AS tecnico,
             tickets.auxiliar AS auxiliar,
             tickets.descripcion AS descripcion,
-            tickets.estado_tickets AS estadoTickets
-            FROM t_tickets AS tickets";
+            tickets.estado_tickets AS estadoTickets,
+             tickets.fecha_creacion AS fechaCreacion
+            FROM t_tickets AS tickets
+            ORDER BY tickets.id_tickets DESC";
     $respuesta = mysqli_query($conexion, $sql);            
 ?>
 
@@ -35,9 +37,8 @@ session_start();
         <th>Hora</th>
         <th>Tecnico</th>
         <th>Auxiliar</th>
-        <th>Editar</th>
         <th>Estado</th>
-        <th>Bloquear</th>
+        <th>Editar</th>
     </thead>
     <tbody>
         <?php 
@@ -58,6 +59,21 @@ session_start();
             <td><?php echo $mostrar['hora']; ?></td>
             <td><?php echo $mostrar['tecnico']; ?></td>
             <td><?php echo $mostrar['auxiliar']; ?></td>
+            <td style="text-align: center;">
+                <?php 
+                    if ($mostrar['estadoTickets'] == 1) { 
+                        echo '<span style="color: gray;">Create</span>';
+                    } else if ($mostrar['estadoTickets'] == 2) {                        
+                        echo '<span style="color: blue;">Progress</span>';
+                    } else if ($mostrar['estadoTickets'] == 3) {                        
+                        echo '<span style="color: green;">Done</span>';
+                    } else if ($mostrar['estadoTickets'] == 4) {                        
+                        echo '<span style="color: red;">Cancel</span>';
+                    } else if ($mostrar['estadoTickets'] == 5) {                        
+                        echo '<span style="color: orange;">Blocked</span>';
+                    }
+                ?>
+            </td>
             <td>
                 <button class="btn btn-info" 
                         data-toggle="modal"     
@@ -66,52 +82,18 @@ session_start();
                      <span class="fas fa-pen"></span> Editar            
                 </button>
             </td>
-            <td>
-                <?php 
-                    if ($mostrar['estadoTickets'] == 1) { 
-                ?>                
-                    <button class="btn btn-gray" style="width: 80px; height: 30px;" 
-                    onclick="cambioEstadoTickets(<?php echo $mostrar['idTickets'] ?>, <?php echo $mostrar['estadoTickets'] ?>)">
-                        Create
-                    </button>
-                <?php
-                    } else if($mostrar['estadoTickets'] == 2) {                        
-                ?>
-                    <button class="btn btn-info" style="width: 80px; height: 30px;"
-                    onclick="cambioEstadoTickets(<?php echo $mostrar['idTickets'] ?>, <?php echo $mostrar['estadoTickets'] ?>)">
-                        Progress
-                    </button>
-                <?php
-                    } else if($mostrar['estadoTickets'] == 3) {                        
-                ?>
-                    <button class="btn btn-success" style="width: 80px; height: 30px;"
-                    onclick="cambioEstadoTickets(<?php echo $mostrar['idTickets'] ?>, <?php echo $mostrar['estadoTickets'] ?>)">
-                        Done
-                    </button>
-                <?php
-                    } 
-                ?>
-            </td>
-            <td>
-                <!-- Boton PENDIENTE por configurar -->
-                <button  class="btn btn-gray"
-                onclick="bloquearTeickets(<?php echo $mostrar['idTickets']; ?>,<?php echo $mostrar['idPersona']; ?>)"  >
-                     Bloquear
-                </button>
-                    
-            </td>
         </tr> 
         <?php } ?>           
     </tbody>
 </table>
 
 <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
         $('#tablaTicketsDataTable').DataTable({
-            language : {
-                url : "../public/datatable/es_es.json"
-            }
+            language: {
+                url: "../public/datatable/es_es.json"
+            },
+            order: [[0, 'desc']] // Asegúrate de que el índice de columna corresponda al ID.
         });
     });
 </script>
-

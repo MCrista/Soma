@@ -73,10 +73,10 @@ $respuesta = mysqli_query($conexion, $sql_comentarios);
                     <div class="row">
                         <div class="col">
                             <p class="mb-1">
-                                <a href="Tickets.php?id=<?php echo $mostrarid['idTickets']; ?>">
-                                    <strong><?php echo 'TKT-' . str_pad($mostrar['idTickets'], 5, '0', STR_PAD_LEFT); ?></strong>
+                                <a href="Tickets.php?id=<?php echo $mostrar['idTickets']; ?>">
+                                    <strong><?php echo 'TKT-' . $mostrar['idTickets']; ?></strong>
                                 </a>
-                                    <strong><?php echo $mostrar['tipoActividad'] . ' ' . $mostrar['nombreCliente']; ?></strong>
+                                <strong><?php echo ' - ' . $mostrar['tipoActividad'] . ' - ' . $mostrar['nombreCliente']; ?></strong>
                             </p>
                         </div>
                     </div>
@@ -109,9 +109,9 @@ $respuesta = mysqli_query($conexion, $sql_comentarios);
                             <?php 
                             if ($mostrar['estadoTickets'] == 1) { // Creado
                             ?>
-                                <button class="btn btn-gray mb-2 " style="color: gray;"
+                                <button class="btn btn-info mb-2"
                                         onclick="cambioEstatusTickets(<?php echo $mostrar['idTickets'] ?>, 2)">
-                                    En Progreso
+                                    Enviar a en Progreso
                                 </button>
                                 <button class="btn btn-gray mb-2" style="color: gray;"
                                         onclick="cambioEstatusTickets(<?php echo $mostrar['idTickets']; ?>, 4)">
@@ -131,12 +131,6 @@ $respuesta = mysqli_query($conexion, $sql_comentarios);
                                 <button class="btn btn-gray mb-2" style="color: gray;"
                                         onclick="cambioEstatusTickets(<?php echo $mostrar['idTickets'] ?>, 5)">
                                     Bloquear
-                                </button>
-                            <?php 
-                            } elseif ($mostrar['estadoTickets'] == 3) { // Finalizado
-                            ?>
-                                <button class="btn btn-success mb-2">
-                                    Finalizado
                                 </button>
                             <?php 
                             } elseif ($mostrar['estadoTickets'] == 5) { // Finalizado
@@ -180,19 +174,22 @@ $respuesta = mysqli_query($conexion, $sql_comentarios);
                                     <p class="mb-1">Hora:</p>
                                 </div>
                                 <div class="col-2 col-md-2 col-lg-2 p-1" >
-                                    <p class="mb-1">
+                                    <p class="mb-1" style="font-weight: bold;">
                                         <?php 
                                             $estados = [
-                                                1 => "Creado",
-                                                2 => "En progreso",
-                                                3 => "Finalizado",
-                                                4 => "Cancelado",
-                                                5 => "Bloqueado"
+                                                1 => ["Creado", "color: gray;"],
+                                                2 => ["En progreso", "color: blue;"],
+                                                3 => ["Finalizado", "color: green;"],
+                                                4 => ["Cancelado", "color: red;"],
+                                                5 => ["Bloqueado", "color: orange;"]
                                             ];
                                             
-                                            echo isset($estados[$mostrar['estadoTickets']]) 
-                                                ? $estados[$mostrar['estadoTickets']] 
-                                                : "Estado desconocido";
+                                            if (isset($estados[$mostrar['estadoTickets']])) {
+                                                $estado = $estados[$mostrar['estadoTickets']];
+                                                echo '<span style="' . $estado[1] . '">' . $estado[0] . '</span>';
+                                            } else {
+                                                echo '<span style="color: black;">Estado desconocido</span>';
+                                            }
                                         ?>
                                     </p>
                                     <p class="mb-1">

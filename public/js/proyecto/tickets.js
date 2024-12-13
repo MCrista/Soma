@@ -99,6 +99,14 @@ function agregarComentarioTickets() {
 }
 
 function cambioEstatusTickets(idTickets, estatusTickets) {
+    const estados = {
+        1: "Creado",
+        2: "En progreso",
+        3: "Finalizado",
+        4: "Cancelado",
+        5: "Bloqueado"
+    };
+
     $.ajax({
         type: "POST",
         data: {
@@ -109,8 +117,14 @@ function cambioEstatusTickets(idTickets, estatusTickets) {
         success: function(respuesta) {
             respuesta = respuesta.trim();
             if (respuesta == 1) {
-                location.reload();
-                Swal.fire(":D", "Cambio de estatus con éxito!", "success"); 
+                const nuevoEstado = estados[estatusTickets] || "Estado desconocido"; // Obtiene el texto del estado
+                Swal.fire(
+                    ":D", 
+                    `El TKT-${idTickets} fue cambiado de estado a "${nuevoEstado}"`, 
+                    "success"
+                ).then(() => {
+                    location.reload(); // Recarga la página después de cerrar la alerta
+                });
             } else {
                 Swal.fire(":(", "Error al cambiar el estatus: " + respuesta, "error");
             }
