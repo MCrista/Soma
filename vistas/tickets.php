@@ -1,6 +1,7 @@
 <?php 
     include "header.php"; 
-    if (isset($_SESSION['usuario']) && $_SESSION['usuario']['rol'] == 1|| $_SESSION['usuario']['rol']==3){
+    if (isset($_SESSION['usuario']) && $_SESSION['usuario']['rol'] == 1|| $_SESSION['usuario']['rol']==3
+    || $_SESSION['usuario']['rol']==4){
         $idUsuario = $_SESSION['usuario']['id'];
 ?>
 
@@ -82,12 +83,15 @@ $respuesta = mysqli_query($conexion, $sql_comentarios);
                     </div>
                     <div class="row mb-1">
                         <div class="col">
-                            <button class="btn btn-gray mb-2" 
-                                    style="color: gray;"
-                                    data-toggle="modal"     
-                                    data-target="#modalActualizarTickets"
-                                    onclick="obtenerDatosTickets(<?php echo $mostrar['idTickets'] ?>)"> Editar            
-                            </button>
+                            <?php if ($_SESSION['usuario']['rol'] == 1): ?>
+                                <button class="btn btn-gray mb-2" 
+                                        style="color: gray;"
+                                        data-toggle="modal"     
+                                        data-target="#modalActualizarTickets"
+                                        onclick="obtenerDatosTickets(<?php echo $mostrar['idTickets'] ?>)"> 
+                                    Editar            
+                                </button>
+                            <?php endif; ?>
                             <button class="btn btn-gray mb-2" 
                                     style="color: gray;"
                                     data-toggle="modal"     
@@ -107,45 +111,47 @@ $respuesta = mysqli_query($conexion, $sql_comentarios);
                                     onclick="obtenerDatosTickets(<?php echo $mostrarid['idTickets'] ?>)"> Clonar            
                             </button>
                             <?php 
-                            if ($mostrar['estadoTickets'] == 1) { // Creado
-                            ?>
-                                <button class="btn btn-info mb-2"
-                                        onclick="cambioEstatusTickets(<?php echo $mostrar['idTickets'] ?>, 2)">
-                                    Enviar a en Progreso
-                                </button>
-                                <button class="btn btn-gray mb-2" style="color: gray;"
-                                        onclick="cambioEstatusTickets(<?php echo $mostrar['idTickets']; ?>, 4)">
-                                    Cancelar
-                                </button>
-                            <?php 
-                            } elseif ($mostrar['estadoTickets'] == 2) { // En Progreso
-                            ?>
-                                <button class="btn btn-info mb-2"
-                                        onclick="cambioEstatusTickets(<?php echo $mostrar['idTickets'] ?>, 3)">
-                                    Finalizar
-                                </button>
-                                <button class="btn btn-gray mb-2" style="color: gray;"
-                                        onclick="cambioEstatusTickets(<?php echo $mostrar['idTickets'] ?>, 4)">
-                                    Cancelar
-                                </button>
-                                <button class="btn btn-gray mb-2" style="color: gray;"
-                                        onclick="cambioEstatusTickets(<?php echo $mostrar['idTickets'] ?>, 5)">
-                                    Bloquear
-                                </button>
-                            <?php 
-                            } elseif ($mostrar['estadoTickets'] == 5) { // Finalizado
-                            ?>
-                                <button class="btn btn-info mb-2"
-                                        onclick="cambioEstatusTickets(<?php echo $mostrar['idTickets'] ?>, 2)">
-                                    Desbloquear
-                                </button>
-                                <button class="btn btn-gray mb-2" style="color: gray;"
-                                        onclick="cambioEstatusTickets(<?php echo $mostrar['idTickets'] ?>, 4)">
-                                    Cancelar
-                                </button>
-                            <?php 
-                            }
-                            ?>                                           
+                                if ($_SESSION['usuario']['rol'] == 3 || $_SESSION['usuario']['rol'] == 4) {
+                                    if ($mostrar['estadoTickets'] == 1) { // Creado
+                                    ?>
+                                        <button class="btn btn-info mb-2"
+                                                onclick="cambioEstatusTickets(<?php echo $mostrar['idTickets'] ?>, 2)">
+                                            Enviar a en Progreso
+                                        </button>
+                                        <button class="btn btn-gray mb-2" style="color: gray;"
+                                                onclick="cambioEstatusTickets(<?php echo $mostrar['idTickets']; ?>, 4)">
+                                            Cancelar
+                                        </button>
+                                    <?php 
+                                    } elseif ($mostrar['estadoTickets'] == 2) { // En Progreso
+                                    ?>
+                                        <button class="btn btn-info mb-2"
+                                                onclick="cambioEstatusTickets(<?php echo $mostrar['idTickets'] ?>, 3)">
+                                            Finalizar
+                                        </button>
+                                        <button class="btn btn-gray mb-2" style="color: gray;"
+                                                onclick="cambioEstatusTickets(<?php echo $mostrar['idTickets'] ?>, 4)">
+                                            Cancelar
+                                        </button>
+                                        <button class="btn btn-gray mb-2" style="color: gray;"
+                                                onclick="cambioEstatusTickets(<?php echo $mostrar['idTickets'] ?>, 5)">
+                                            Bloquear
+                                        </button>
+                                    <?php 
+                                    } elseif ($mostrar['estadoTickets'] == 5) { // Finalizado
+                                    ?>
+                                        <button class="btn btn-info mb-2"
+                                                onclick="cambioEstatusTickets(<?php echo $mostrar['idTickets'] ?>, 2)">
+                                            Desbloquear
+                                        </button>
+                                        <button class="btn btn-gray mb-2" style="color: gray;"
+                                                onclick="cambioEstatusTickets(<?php echo $mostrar['idTickets'] ?>, 4)">
+                                            Cancelar
+                                        </button>
+                                    <?php 
+                                    }
+                                }
+                            ?>                                          
                         </div>
                     </div>
                 <form id="FrmDetallesTickets" method="POST" onsubmit="return actualizarTickets()">
